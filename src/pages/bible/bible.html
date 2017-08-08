@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar color="light">
+
+    <ion-buttons end>
+      <button ion-button (click)="openFixTextSize($event)" class="topIcon">
+        Aa
+      </button>
+      <button ion-button icon-only class="topIcon">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-item color="light" no-lines>
+      <button (click)="openBookList($event)" class="book-name-header uppercase" ion-button icon-right clear>
+        {{ bookName }}
+        <ion-icon ios="md-arrow-dropdown" name="arrow-dropdown"></ion-icon>
+      </button>
+      <button (click)="openChapters($event)" class="chapter-header" ion-button icon-right clear>
+        {{ chapterIndex }}
+        <ion-icon ios="md-arrow-dropdown" name="arrow-dropdown"></ion-icon>
+      </button>
+
+    </ion-item>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-fab bottom right>
+    <button ion-fab color="light" mini (click)="next()">
+      <ion-icon name="arrow-forward" md="ios-arrow-forward"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab bottom left>
+    <button ion-fab color="light" mini (click)="back()">
+      <ion-icon name="arrow-back" md="ios-arrow-back"></ion-icon>
+    </button>
+  </ion-fab>
+
+
+  <div text-wrap *ngFor="let verse of verses">
+    <div [class]="textSize">
+      <b><i><sup [class]="verseSize">{{verse.key}}.</sup></i></b>
+      {{verse.value}}
+    </div>
+
+  </div>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+
+
+</ion-content>

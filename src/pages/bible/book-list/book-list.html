@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Books</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="close()" icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <button *ngFor="let book of books" ion-item (click)="change(book.index)">{{ book.name }}</button>
+  </ion-list>
+</ion-content>
+

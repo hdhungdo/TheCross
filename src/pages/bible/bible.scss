@@ -1,0 +1,61 @@
+page-bible {
+  .text32pt {
+    font-size: 32pt;
+    line-height: 150%;
+    user-select: text;
+  }
+  .text28pt {
+    font-size: 28pt;
+    line-height: 150%;
+    user-select: text;
+  }
+  .text24pt {
+    font-size: 24pt;
+    line-height: 150%;
+    user-select: text;
+  }
+  .text20pt {
+    font-size: 20pt;
+    line-height: 150%;
+    user-select: text;
+  }
+  .text16pt {
+    font-size: 16pt;
+    line-height: 150%;
+    user-select: text;
+  }
+  .text12pt {
+    font-size: 12pt;
+    line-height: 150%;
+    user-select: text;
+  }
+  .text8pt {
+    font-size: 8pt;
+    line-height: 150%;
+    user-select: text;
+  }
+
+  .topIcon {
+    margin-right: 15px;
+    text-transform: none;
+    font-size: 14pt;
+  }
+
+  .book-name-header {
+    padding-left: 15px;
+    padding-right: 5px;
+    font-size: 17px;
+    color: black;
+  }
+
+  .chapter-header {
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 17px;
+    color: black;
+  }
+
+  .uppercase {
+    text-transform: uppercase;
+  }
+}

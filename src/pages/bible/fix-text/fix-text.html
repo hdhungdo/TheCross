@@ -1,0 +1,21 @@
+<ion-footer>
+  <ion-navbar color="dark">
+    <ion-title>
+      Text Size ({{size}})
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="close()" icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-list>
+    <button ion-item (click)="change(12)">12pt</button>
+    <button ion-item (click)="change(16)">16pt</button>
+    <button ion-item (click)="change(20)">20pt</button>
+    <button ion-item (click)="change(24)">24pt</button>
+    <button ion-item (click)="change(28)">28pt</button>
+    <button ion-item (click)="change(32)">32pt</button>
+  </ion-list>
+</ion-footer>
+
