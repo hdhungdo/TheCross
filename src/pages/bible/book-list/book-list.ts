@@ -35,4 +35,15 @@ export class BookListPage {
   close() {
     this.viewCtrl.dismiss();
   }
+
+  filterItems(ev) {
+    this.books = this.navParams.get('books');
+    let val = ev.target.value;
+
+    if (val && val.trim() != '') {
+      this.books = this.books.filter((item) => {
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
 }

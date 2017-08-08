@@ -15,37 +15,32 @@
   <ion-content>
 
     <ion-list no-lines>
-      <ion-item (click)="goToCalendar()">
-        <ion-icon name="clock" small>
-          Calendar
-        </ion-icon>
-      </ion-item>
+      <button ion-item (click)="goToCalendar()">
+        <ion-icon name="clock" small class="menus"></ion-icon>
+        Calendar
+      </button>
 
       <ion-item-divider color="light"></ion-item-divider>
 
-      <ion-item (click)="goToAbout()">
-        <ion-icon name="information-circle" small>
-          About
-        </ion-icon>
-      </ion-item>
+      <button ion-item (click)="goToAbout()">
+        <ion-icon name="information-circle" small class="menus"></ion-icon>
+        About
+      </button>
 
-      <ion-item (click)="goToSetting()">
-        <ion-icon name="settings" small>
-          Settings
-        </ion-icon>
-      </ion-item>
+      <button ion-item (click)="goToSetting()">
+        <ion-icon name="settings" small class="menus"></ion-icon>
+        Settings
+      </button>
 
-      <ion-item (click)="goToHelp()">
-        <ion-icon name="help-circle" small>
-          Help
-        </ion-icon>
-      </ion-item>
+      <button ion-item (click)="goToHelp()">
+        <ion-icon name="help-circle" small class="menus"></ion-icon>
+        Help
+      </button>
 
-      <ion-item menuClose>
-        <ion-icon name="close-circle" small>
-          Close Menu
-        </ion-icon>
-      </ion-item>
+      <button ion-item menuClose>
+        <ion-icon name="close-circle" small class="menus"></ion-icon>
+        Close Menu
+      </button>
     </ion-list>
 
 

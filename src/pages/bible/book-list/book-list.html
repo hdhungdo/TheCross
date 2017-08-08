@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>Books</ion-title>
     <ion-buttons end>
       <button ion-button (click)="close()" icon-only>
@@ -7,6 +7,9 @@
       </button>
     </ion-buttons>
   </ion-navbar>
+  <ion-toolbar no-border-top color="dark">
+    <ion-searchbar placeholder="Book's Name" (ionInput)="filterItems($event)"></ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
   <ion-list>

@@ -1,7 +1,7 @@
 <ion-footer>
   <ion-navbar color="dark">
     <ion-title>
-      Text Size ({{size}})
+      Adjustment
     </ion-title>
     <ion-buttons end>
       <button ion-button (click)="close()" icon-only>
@@ -9,13 +9,13 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-list>
-    <button ion-item (click)="change(12)">12pt</button>
-    <button ion-item (click)="change(16)">16pt</button>
-    <button ion-item (click)="change(20)">20pt</button>
-    <button ion-item (click)="change(24)">24pt</button>
-    <button ion-item (click)="change(28)">28pt</button>
-    <button ion-item (click)="change(32)">32pt</button>
-  </ion-list>
+  <ion-toolbar>
+    <ion-item>
+      <ion-range min="12" max="32" step="4" snaps="true" pin="true" [(ngModel)]="size" (ionChange)="change(size)" color="dark">
+        <ion-icon range-left small color="dark">Text Size</ion-icon>
+        <ion-icon range-right color="dark">{{size}}</ion-icon>
+      </ion-range>
+    </ion-item>
+  </ion-toolbar>
 </ion-footer>
 

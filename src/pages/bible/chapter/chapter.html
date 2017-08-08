@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-title>Chapters</ion-title>
     <ion-buttons end>
       <button ion-button (click)="close()" icon-only>
@@ -10,6 +10,6 @@
 </ion-header>
 <ion-content>
   <ion-list>
-    <button *ngFor="let chapter of chapters" ion-item (click)="change(chapter + 1)">{{ chapter + 1 }}</button>
+    <button class="center" *ngFor="let chapter of chapters" ion-item (click)="change(chapter + 1)">{{ chapter + 1 }}</button>
   </ion-list>
 </ion-content>
