@@ -1,3 +1,15 @@
 page-search-bible {
+  .background-dark {
+    background-color: #222222;
+  }
 
+  .background-light {
+    background-color: #f4f4f4;
+  }
+
+  .aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }

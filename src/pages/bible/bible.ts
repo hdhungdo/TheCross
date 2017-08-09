@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Events, IonicPage, ModalController, NavController} from 'ionic-angular';
+import {Events, IonicPage, ModalController} from 'ionic-angular';
 import { BibleServiceProvider } from "../../providers/bible-service/bible-service";
 
 /**
@@ -27,14 +27,13 @@ export class BiblePage {
   verseSize;
 
 
-  constructor(public navCtrl: NavController, public events: Events,
-              public modalCtrl: ModalController) {
+  constructor(public events: Events, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
     this.getBible();
     this.events.subscribe('textSize', (data) => {
-      if (data != null) {
+      if (data !== null) {
         this.textSize = 'text' + data.toString() + 'pt';
         this.verseSize = 'text' + (data - 4).toString() + 'pt';
         let fontSize = {
