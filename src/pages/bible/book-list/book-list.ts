@@ -42,7 +42,9 @@ export class BookListPage {
 
     if (val && val.trim() != '') {
       this.books = this.books.filter((item) => {
-        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.name.replace(/[&\/\\#-=,+()$~%.'":*?<>{}]/gi,' ')
+          .replace(/ {2,}/g,' ').toLowerCase().indexOf(val
+            .replace(/ {2,}/g,' ').toLowerCase()) > -1);
       })
     }
   }

@@ -12,8 +12,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-list>
-    <button *ngFor="let book of books" ion-item (click)="change(book.index)">{{ book.name }}</button>
-  </ion-list>
+  <div>
+    <span *ngFor="let book of books" ion-item (click)="change(book.index)">{{ book.name }}</span>
+  </div>
 </ion-content>
 

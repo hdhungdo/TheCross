@@ -29,59 +29,27 @@ export class InitialPage {
   }
 
   getBible() {
-    this.storage.get('bible').then((data) => {
-      if (data == null) {
-        this.bibleService.getBible().subscribe(rp => {
-          this.storage.set('bible', rp);
-        });
-      }
-    }).catch((data) => {
-      this.bibleService.getBible().subscribe(rp => {
-        this.storage.set('bible', rp);
-      });
-    });
-
-    this.storage.get('bible').then((data) => {
-      BibleServiceProvider.BIBLE = data;
+    this.bibleService.getBible().subscribe(rp => {
+      BibleServiceProvider.BIBLE = rp;
     });
   }
 
   getCache() {
-    let bibleInfo = {
-      bookIndex: 0,
-      chapterIndex: 0
-    };
     this.storage.get('bibleInfo').then((data) => {
-      if (data == null) {
-        this.storage.set('bibleInfo', bibleInfo);
+      if (data !== null) {
+        BibleServiceProvider.bookIndex = data.bookIndex;
+        BibleServiceProvider.chapterIndex = data.chapterIndex;
       }
-    }).catch((data) => {
-      this.storage.set('bibleInfo', bibleInfo);
-    });
-
-    this.storage.get('bibleInfo').then((data) => {
-      BibleServiceProvider.bookIndex = data.bookIndex;
-      BibleServiceProvider.chapterIndex = data.chapterIndex;
-    });
+    })
   }
 
   getFontSize() {
-    let fontSize = {
-      textSize: '12pt',
-      verseSize: '8pt'
-    };
     this.storage.get('fontSize').then((data) => {
-      if (data == null) {
-        this.storage.set('fontSize', fontSize);
+      if (data !== null) {
+        BibleServiceProvider.textSize = data.textSize;
+        BibleServiceProvider.verseSize = data.verseSize;
       }
-    }).catch((data) => {
-      this.storage.set('fontSize', fontSize);
-    });
-
-    this.storage.get('fontSize').then((data) => {
-      BibleServiceProvider.textSize = data.textSize;
-      BibleServiceProvider.verseSize = data.verseSize;
-    });
+    })
   }
 
 }

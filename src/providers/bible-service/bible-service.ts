@@ -16,11 +16,11 @@ export class BibleServiceProvider {
   srcBible: string = 'assets/viet-bible.json';
 
   static BIBLE;
-  static bookIndex: number;
-  static chapterIndex: number;
+  static bookIndex: number = 0;
+  static chapterIndex: number = 0;
   static storage: Storage;
-  static textSize: string;
-  static verseSize: string;
+  static textSize: string = '12pt';
+  static verseSize: string = '8pt';
 
   constructor(private http: Http, private storage: Storage) {
     BibleServiceProvider.storage = storage;
