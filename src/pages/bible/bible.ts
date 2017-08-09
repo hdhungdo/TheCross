@@ -143,4 +143,17 @@ export class BiblePage {
     });
   }
 
+  openSearchBible(event) {
+    let modal = this.modalCtrl.create('SearchBiblePage');
+    modal.onDidDismiss(data => {
+      if (data != null) {
+        BibleServiceProvider.update(data.bookIndex, data.chapterIndex);
+        this.update();
+      }
+    });
+    modal.present({
+      ev: event
+    });
+  }
+
 }
