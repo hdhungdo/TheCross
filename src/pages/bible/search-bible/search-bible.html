@@ -15,7 +15,7 @@
 
 
 <ion-content padding class="content-back-ground">
-  <ion-card color="hdSkin" *ngFor="let verse of (filter ? filter.slice(0, 99) : [])" (click)="change(verse.bookIndex, verse.chapterIndex)">
+  <ion-card color="hdYellow" *ngFor="let verse of (filter ? filter.slice(0, 99) : [])" (click)="change(verse.bookIndex, verse.chapterIndex)">
     <ion-card-header>
       <b>{{ verse.book }} {{ verse.chapter }}:{{ verse.verse }}</b>
     </ion-card-header>
@@ -26,11 +26,13 @@
   {{something}}
 </ion-content>
 
-<ion-footer class="background-dark">
-  <ion-buttons end>
-    <button clear color="light" ion-button icon-right (click)="filterItems(input)" round>
-      Search
-      <ion-icon name="search"></ion-icon>
-    </button>
-  </ion-buttons>
+<ion-footer>
+  <ion-navbar color="dark">
+    <ion-buttons end>
+      <button clear color="light" ion-button icon-right (click)="filterItems(input)" round>
+        Search
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-footer>

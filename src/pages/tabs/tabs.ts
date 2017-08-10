@@ -47,7 +47,6 @@ export class TabsPage {
   }
 
   openMenu() {
-    this.menu.enable(true, 'menu');
     this.menu.toggle('menu');
   }
 
