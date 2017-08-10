@@ -16,15 +16,15 @@ import { BibleServiceProvider } from "../../providers/bible-service/bible-servic
 })
 export class BiblePage {
 
-  chapters;
-  chapterIndex;
-  content;
-  verses;
-  books;
-  bookIndex;
-  bookName;
-  textSize;
-  verseSize;
+  chapters: any;
+  chapterIndex: number;
+  content: string;
+  verses: any;
+  books: any;
+  bookIndex: number;
+  bookName: string;
+  textSize: string;
+  verseSize: string;
 
 
   constructor(public events: Events, public modalCtrl: ModalController) {

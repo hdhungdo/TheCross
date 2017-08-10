@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import {IonicPage, ToastController, ViewController} from 'ionic-angular';
 import {BibleServiceProvider} from "../../../providers/bible-service/bible-service";
 
 /**
@@ -20,7 +20,8 @@ export class SearchBiblePage {
   filter = [];
   input;
 
-  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController,
+              public toastCtrl: ToastController) {
     let i = 0;
     this.bible.forEach(book => {
       let j = 0;
@@ -64,13 +65,28 @@ export class SearchBiblePage {
           .replace(/ {2,}/g,' ').toUpperCase().indexOf(input.replace(/[&\/\\#-=,+()$~%.'":*?<>{}]/gi,' ')
             .replace(/ {2,}/g,' ').toUpperCase()) > -1);
       })
+      if (this.filter.length === 0) {
+        let message = 'Cannot find "' + input + '"';
+        this.showToast('middle', message)
+      }
     } else {
+      this.showToast('middle', 'Please input text you want to search')
       this.filter = [];
     }
   }
 
   close() {
     this.viewCtrl.dismiss();
+  }
+
+  showToast(position: string, message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      position: position
+    });
+
+    toast.present(toast);
   }
 
 }
