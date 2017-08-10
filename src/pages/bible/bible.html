@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="light">
+  <ion-navbar color="hdBrown">
 
     <ion-buttons end>
       <button ion-button icon-only (click)="openFixTextSize($event)" class="topIcon">
@@ -10,17 +10,17 @@
       </button>
     </ion-buttons>
 
-    <ion-item color="light" no-lines>
-      <button (click)="openBookList($event)" class="book-name-header uppercase" ion-button icon-right clear>
+    <ion-buttons>
+      <button text-nowrap (click)="openBookList($event)" class="uppercase" ion-button icon-right clear>
         {{ bookName }}
         <ion-icon ios="md-arrow-dropdown" name="arrow-dropdown"></ion-icon>
       </button>
-      <button (click)="openChapters($event)" class="chapter-header" ion-button icon-right clear>
+      <button (click)="openChapters($event)" class="uppercase" ion-button icon-right clear>
         {{ chapterIndex }}
         <ion-icon ios="md-arrow-dropdown" name="arrow-dropdown"></ion-icon>
       </button>
 
-    </ion-item>
+    </ion-buttons>
 
   </ion-navbar>
 
@@ -30,13 +30,13 @@
 <ion-content padding>
 
   <ion-fab bottom right>
-    <button ion-fab color="light" mini (click)="next()">
+    <button ion-fab color="hdBrown" mini (click)="next()">
       <ion-icon name="arrow-forward" md="ios-arrow-forward"></ion-icon>
     </button>
   </ion-fab>
 
   <ion-fab bottom left>
-    <button ion-fab color="light" mini (click)="back()">
+    <button ion-fab color="hdBrown" mini (click)="back()">
       <ion-icon name="arrow-back" md="ios-arrow-back"></ion-icon>
     </button>
   </ion-fab>

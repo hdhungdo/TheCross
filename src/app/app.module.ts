@@ -9,6 +9,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HttpModule } from "@angular/http";
 import { BibleServiceProvider } from '../providers/bible-service/bible-service';
+import { TranslateServiceProvider } from '../providers/translate-service/translate-service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { BibleServiceProvider } from '../providers/bible-service/bible-service';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BibleServiceProvider
+    BibleServiceProvider,
+    TranslateServiceProvider
   ]
 })
 export class AppModule {}

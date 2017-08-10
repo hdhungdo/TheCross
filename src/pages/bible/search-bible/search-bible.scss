@@ -1,3 +1,25 @@
 page-search-bible {
+  .background-dark {
+    background-color: #222222;
+  }
 
+  .background-light {
+    background-color: #f4f4f4;
+  }
+
+  .aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content-back-ground {
+    background-color: rgba(20,20,20,0.35);
+  }
+
+  .card-ion {
+    margin-left: 8px;
+    margin-right: 8px;
+    width: auto;
+  }
 }

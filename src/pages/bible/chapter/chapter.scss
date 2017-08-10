@@ -1,7 +1,13 @@
 page-chapter {
-  div{
-    display: block;
-    line-height:55px;
-    font-size: 16pt;
+  .hd-div {
+    line-height:50px;
+    font-size: 14pt;
+    position:relative;
+    border: solid 2px #7a4e3f;
+    color: #7a4e3f;
+  }
+
+  .div-background {
+    background-color: #ffe5bf;
   }
 }
