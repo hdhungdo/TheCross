@@ -14,8 +14,8 @@
 </ion-header>
 
 
-<ion-content padding class="content-back-ground">
-  <ion-card color="hdYellow" *ngFor="let verse of (filter ? filter.slice(0, 99) : [])" (click)="change(verse.bookIndex, verse.chapterIndex)">
+<ion-content class="content-back-ground">
+  <ion-card class="card-ion" color="hdYellow" *ngFor="let verse of (filter ? filter.slice(0, 99) : [])" (click)="change(verse.bookIndex, verse.chapterIndex)">
     <ion-card-header>
       <b>{{ verse.book }} {{ verse.chapter }}:{{ verse.verse }}</b>
     </ion-card-header>
@@ -23,7 +23,6 @@
       {{verse.content}}
     </ion-card-content>
   </ion-card>
-  {{something}}
 </ion-content>
 
 <ion-footer>

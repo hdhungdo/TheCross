@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {IonicPage, ToastController, ViewController} from 'ionic-angular';
+import {IonicPage, LoadingController, ToastController, ViewController} from 'ionic-angular';
 import {BibleServiceProvider} from "../../../providers/bible-service/bible-service";
+import {TranslateServiceProvider} from "../../../providers/translate-service/translate-service";
 
 /**
  * Generated class for the SearchBiblePage page.
@@ -21,7 +22,9 @@ export class SearchBiblePage {
   input;
 
   constructor(public viewCtrl: ViewController,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController,
+              public translate: TranslateServiceProvider,
+              public loading: LoadingController) {
     let i = 0;
     this.bible.forEach(book => {
       let j = 0;
@@ -59,20 +62,29 @@ export class SearchBiblePage {
   }
 
   filterItems(input) {
+    let load = this.loading.create({
+      content: 'Searching...Please wait!'
+    });
     if (input && (input.trim() != '')) {
-      this.filter = this.list.filter((item) => {
-        return (item.content.replace(/[&\/\\#-=,+()$~%.'":*?<>{}]/gi,' ')
-          .replace(/ {2,}/g,' ').toUpperCase().indexOf(input.replace(/[&\/\\#-=,+()$~%.'":*?<>{}]/gi,' ')
-            .replace(/ {2,}/g,' ').toUpperCase()) > -1);
-      })
-      if (this.filter.length === 0) {
-        let message = 'Cannot find "' + input + '"';
-        this.showToast('middle', message)
-      }
+      load.present(load).then(() => {
+        this.filter = this.list.filter((item) => {
+
+          return (this.translate.removeDiacritics(item.content.replace(/[&\/\\#-=,+()$~%.'":*?<>{}]/gi,' ')
+            .replace(/ {2,}/g,' ').toUpperCase()).indexOf(
+            this.translate.removeDiacritics(input.replace(/[&\/\\#-=,+()$~%.'":*?<>{}]/gi,' ')
+              .replace(/ {2,}/g,' ').toUpperCase())) > -1);
+        });
+        load.dismiss(load);
+        if (this.filter.length == 0) {
+          let message = 'Cannot find "' + input + '"';
+          this.showToast('top', message)
+        }
+      });
     } else {
-      this.showToast('middle', 'Please input text you want to search')
+      this.showToast('top', 'Please input text you want to search')
       this.filter = [];
     }
+
   }
 
   close() {
