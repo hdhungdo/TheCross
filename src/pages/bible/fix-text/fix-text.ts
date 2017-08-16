@@ -14,7 +14,7 @@ import {Events, IonicPage, NavParams, ViewController} from 'ionic-angular';
   templateUrl: 'fix-text.html',
 })
 export class FixTextPage {
-  size;
+  size = 12;
 
   constructor(public viewCtrl: ViewController, public navParams: NavParams, public events: Events) {}
 
@@ -23,7 +23,7 @@ export class FixTextPage {
   }
 
   change(data) {
-    this.size = data + 'pt';
+    this.size = data;
     this.events.publish('textSize', data);
   }
 

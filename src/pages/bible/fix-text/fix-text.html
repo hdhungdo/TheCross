@@ -12,9 +12,9 @@
   </ion-navbar>
   <ion-toolbar>
     <ion-item>
-      <ion-range min="12" max="32" step="4" snaps="true" pin="true" [(ngModel)]="size" (ionChange)="change(size)" color="dark">
+      <ion-range min="8" max="32" pin="true" [(ngModel)]="size" (ionChange)="change(size)" color="dark">
         <ion-icon range-left small color="dark">Text Size</ion-icon>
-        <ion-icon range-right color="dark">{{size}}</ion-icon>
+        <ion-icon range-right color="dark">{{size}}pt</ion-icon>
       </ion-range>
     </ion-item>
   </ion-toolbar>

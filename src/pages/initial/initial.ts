@@ -40,7 +40,7 @@ export class InitialPage {
         BibleServiceProvider.bookIndex = data.bookIndex;
         BibleServiceProvider.chapterIndex = data.chapterIndex;
       }
-    })
+    });
   }
 
   getFontSize() {
@@ -49,7 +49,7 @@ export class InitialPage {
         BibleServiceProvider.textSize = data.textSize;
         BibleServiceProvider.verseSize = data.verseSize;
       }
-    })
+    });
   }
 
 }

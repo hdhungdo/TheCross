@@ -38,8 +38,8 @@ export class BiblePage {
         this.textSize = 'text' + data.toString() + 'pt';
         this.verseSize = 'text' + (data - 4).toString() + 'pt';
         let fontSize = {
-          textSize: data.toString() + 'pt',
-          verseSize: (data - 4).toString() + 'pt'
+          textSize: data,
+          verseSize: (data - 4)
         };
         BibleServiceProvider.setFontSize(fontSize);
       }
@@ -59,8 +59,8 @@ export class BiblePage {
     this.chapterIndex = BibleServiceProvider.chapterIndex + 1;
     this.verses = BibleServiceProvider.getContent();
     this.bookName = this.books[this.bookIndex].name;
-    this.textSize = 'text' + BibleServiceProvider.textSize;
-    this.verseSize = 'text' + BibleServiceProvider.verseSize;
+    this.textSize = 'text' + BibleServiceProvider.textSize + 'pt';
+    this.verseSize = 'text' + BibleServiceProvider.verseSize + 'pt';
   }
 
   update() {

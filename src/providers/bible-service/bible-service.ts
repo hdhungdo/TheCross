@@ -19,8 +19,8 @@ export class BibleServiceProvider {
   static bookIndex: number = 0;
   static chapterIndex: number = 0;
   static storage: Storage;
-  static textSize: string = '12pt';
-  static verseSize: string = '8pt';
+  static textSize: number = 12;
+  static verseSize: number = 8;
 
   constructor(private http: Http, private storage: Storage) {
     this.storage.get('dummy').then(data => {});

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Events, IonicPage, ViewController} from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 /**
  * Generated class for the SettingsPage page.
@@ -15,11 +16,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  size = 12;
+
+  constructor(public viewCtrl: ViewController, public events: Events,
+              public storage: Storage) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
+    this.storage.get('fontSize').then((data) => {
+      if (data !== null) {
+        this.size = data.textSize;
+      }
+    })
   }
 
+  change(data) {
+    this.size = data;
+    this.events.publish('textSize', data);
+  }
+
+  close() {
+    this.viewCtrl.dismiss();
+  }
 }
