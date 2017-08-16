@@ -44,7 +44,7 @@
 
   <div text-wrap *ngFor="let verse of verses">
     <div [class]="textSize">
-      <b><i><sup [class]="verseSize">{{verse.key}}.</sup></i></b>
+      <b><i><sup [class]="verseSize" [id]="verse.key.toString()">{{verse.key}}.</sup></i></b>
       {{verse.value}}
     </div>
 

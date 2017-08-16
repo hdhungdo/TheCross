@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, LoadingController, ToastController, ViewController} from 'ionic-angular';
+import {Events, IonicPage, LoadingController, ToastController, ViewController} from 'ionic-angular';
 import {BibleServiceProvider} from "../../../providers/bible-service/bible-service";
 import {TranslateServiceProvider} from "../../../providers/translate-service/translate-service";
 
@@ -24,7 +24,8 @@ export class SearchBiblePage {
   constructor(public viewCtrl: ViewController,
               public toastCtrl: ToastController,
               public translate: TranslateServiceProvider,
-              public loading: LoadingController) {
+              public loading: LoadingController,
+              public event: Events) {
     let i = 0;
     this.bible.forEach(book => {
       let j = 0;
@@ -53,11 +54,13 @@ export class SearchBiblePage {
 
   }
 
-  change(bIndex, cIndex) {
+  change(bIndex, cIndex, verse) {
     let info = {
       bookIndex: bIndex,
-      chapterIndex: cIndex
+      chapterIndex: cIndex,
+      verse: verse.toString()
     };
+    this.event.publish('searchBible', info);
     this.viewCtrl.dismiss(info);
   }
 
