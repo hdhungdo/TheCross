@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {Events, IonicPage, ModalController} from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import {Content, Events, IonicPage, ModalController} from 'ionic-angular';
 import { BibleServiceProvider } from "../../providers/bible-service/bible-service";
 
 /**
@@ -15,6 +15,7 @@ import { BibleServiceProvider } from "../../providers/bible-service/bible-servic
   templateUrl: 'bible.html',
 })
 export class BiblePage {
+  @ViewChild(Content) ionContent: Content;
 
   chapters: any;
   chapterIndex: number;
@@ -41,6 +42,12 @@ export class BiblePage {
           verseSize: (data - 4).toString() + 'pt'
         };
         BibleServiceProvider.setFontSize(fontSize);
+      }
+    });
+    this.events.subscribe('searchBible', (data) => {
+      if (data !== null) {
+        BibleServiceProvider.update(data.bookIndex, data.chapterIndex);
+        this.update();
       }
     })
   }
@@ -115,7 +122,7 @@ export class BiblePage {
     let info = {
       books: this.books,
       bookIndex: this.bookIndex
-    }
+    };
     let modal = this.modalCtrl.create('BookListPage', info);
     modal.onDidDismiss(data => {
       if (data != null && data != this.bookIndex) {
@@ -133,7 +140,7 @@ export class BiblePage {
   openChapters(event) {
     let modal = this.modalCtrl.create('ChapterPage', {chapters: this.chapters});
     modal.onDidDismiss(data => {
-      if (data != null) {
+      if (data !== null) {
         this.changeChapter(data);
       }
     });
@@ -145,14 +152,19 @@ export class BiblePage {
   openSearchBible(event) {
     let modal = this.modalCtrl.create('SearchBiblePage');
     modal.onDidDismiss(data => {
-      if (data != null) {
-        BibleServiceProvider.update(data.bookIndex, data.chapterIndex);
-        this.update();
+      if (data !== null) {
+        this.scrollTo(data.verse);
       }
     });
     modal.present({
       ev: event
     });
+  }
+
+  scrollTo(element:string) {
+    this.ionContent.resize();
+    let yOffset = document.getElementById(element).offsetTop;
+    this.ionContent.scrollTo(0, yOffset, 1000);
   }
 
 }
