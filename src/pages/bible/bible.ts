@@ -152,7 +152,7 @@ export class BiblePage {
   openSearchBible(event) {
     let modal = this.modalCtrl.create('SearchBiblePage');
     modal.onDidDismiss(data => {
-      if (data !== null) {
+      if (data !== null && data !== undefined) {
         this.scrollTo(data.verse);
       }
     });
