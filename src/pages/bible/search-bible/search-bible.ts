@@ -91,7 +91,9 @@ export class SearchBiblePage {
   }
 
   close() {
-    this.viewCtrl.dismiss();
+    if (this.filter.length == 0) {
+      this.viewCtrl.dismiss();
+    }
   }
 
   showToast(position: string, message: string) {
