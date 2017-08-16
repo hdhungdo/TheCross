@@ -23,6 +23,7 @@ export class BibleServiceProvider {
   static verseSize: string = '8pt';
 
   constructor(private http: Http, private storage: Storage) {
+    this.storage.get('dummy').then(data => {});
     BibleServiceProvider.storage = storage;
   }
 
