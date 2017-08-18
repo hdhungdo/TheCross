@@ -12,7 +12,6 @@ import { BibleServiceProvider } from "../../providers/bible-service/bible-servic
 
 @IonicPage()
 @Component({
-  selector: 'page-initial',
   templateUrl: 'initial.html',
 })
 export class InitialPage {

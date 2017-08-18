@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
 
 /*
   Generated class for the FirebaseDatabaseProvider provider.
@@ -11,8 +9,16 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FirebaseDatabaseProvider {
 
-  constructor(public http: Http) {
+  constructor() {
     console.log('Hello FirebaseDatabaseProvider Provider');
   }
+
+  // getItems() {
+  //   return this.afDB.list(`/items/`);
+  // }
+  //
+  // updateItem(key) {
+  //   this.afDB.object(`/items/${key}`).update({item: 'changed', value: 'something'});
+  // }
 
 }

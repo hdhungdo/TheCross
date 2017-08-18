@@ -80,7 +80,7 @@ export class BibleServiceProvider {
   static transformToArray(value: any) {
     let items = [];
     for (let key in value) {
-      items.push({key: key, value: value[key]});
+      items.push({key: key, value: value[key], background: ''});
     }
     return items;
   }

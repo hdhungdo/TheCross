@@ -81,6 +81,14 @@ export class BiblePage {
     this.update();
   }
 
+  higlight(verse) {
+    if (verse.background === '') {
+      verse.background = 'highlight';
+    } else {
+      verse.background = '';
+    }
+  }
+
   next() {
     let max = BibleServiceProvider.BIBLE[BibleServiceProvider.bookIndex].chapters.length;
     let bChange: number = BibleServiceProvider.bookIndex;
@@ -125,7 +133,7 @@ export class BiblePage {
     };
     let modal = this.modalCtrl.create('BookListPage', info);
     modal.onDidDismiss(data => {
-      if (data != null && data != this.bookIndex) {
+      if (data != null && data !== undefined && data != this.bookIndex) {
         this.changeBook(data);
         if (this.chapters.length > 1) {
           this.openChapters(event);
@@ -140,7 +148,7 @@ export class BiblePage {
   openChapters(event) {
     let modal = this.modalCtrl.create('ChapterPage', {chapters: this.chapters});
     modal.onDidDismiss(data => {
-      if (data !== null) {
+      if (data !== null && data !== undefined) {
         this.changeChapter(data);
       }
     });

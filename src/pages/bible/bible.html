@@ -43,7 +43,7 @@
 
 
   <div text-wrap *ngFor="let verse of verses">
-    <div [class]="textSize">
+    <div [class]="textSize + ' ' + verse.background" (click)="higlight(verse)">
       <b><i><sup [class]="verseSize" [id]="verse.key.toString()">{{verse.key}}.</sup></i></b>
       {{verse.value}}
     </div>
@@ -51,7 +51,7 @@
   </div>
   <br/>
   <br/>
-  <div class="copyRight">© Hung Do, All Rights Reserved</div>
+  <div class="copyRight">© Hung Do</div>
   <div class="copyRight">Kinh Thánh Bản Truyền Thống 1926</div>
   <br/>
   <br/>

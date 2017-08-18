@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController} from 'ionic-angular';
-import {AngularFireDatabase} from "angularfire2/database";
+import {FirebaseDatabaseProvider} from "../../providers/firebase-database/firebase-database";
 
 @IonicPage()
 @Component({
@@ -11,22 +11,26 @@ export class HomePage {
   items = [];
   input;
 
-  constructor(public navCtrl: NavController, public afDB: AngularFireDatabase) {
-    this.afDB.list('/items/').subscribe(data => {
-      this.items = data;
-    });
+  constructor(public navCtrl: NavController, public afDB: FirebaseDatabaseProvider) {
+    // this.afDB.getItems().subscribe(data => {
+    //   this.items = data;
+    // });
   }
 
   ionViewDidLoad() {
 
   }
 
-  adddItems() {
-    this.afDB.list('/items/').push({item: this.input, value: 'someValue'});
-  }
-
-  printId(index) {
-    console.log(this.items[index].$key);
-  }
+  // addItems(input) {
+  //   if (input !== undefined && input !== '') {
+  //     this.afDB.getItems().push({item: input, value: 'someValue'});
+  //   }
+  // }
+  //
+  // printId(key) {
+  //   console.log(key);
+  //   this.afDB.updateItem(key);
+  //   this.afDB.getItems().remove(key);
+  // }
 
 }

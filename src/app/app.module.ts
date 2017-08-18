@@ -10,11 +10,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { BibleServiceProvider } from '../providers/bible-service/bible-service';
 import { TranslateServiceProvider } from '../providers/translate-service/translate-service';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+// import { AngularFireDatabaseProvider} from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CONFIG } from "./app.firebase.config";
 import { FirebaseDatabaseProvider } from '../providers/firebase-database/firebase-database';
+import {FirebaseAuthProvider} from "../providers/firebase-auth/firebase-auth";
 
 @NgModule({
   declarations: [
@@ -25,8 +25,6 @@ import { FirebaseDatabaseProvider } from '../providers/firebase-database/firebas
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     AngularFireModule.initializeApp(FIREBASE_CONFIG)
   ],
   bootstrap: [IonicApp],
@@ -39,7 +37,10 @@ import { FirebaseDatabaseProvider } from '../providers/firebase-database/firebas
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BibleServiceProvider,
     TranslateServiceProvider,
-    FirebaseDatabaseProvider
+    FirebaseDatabaseProvider,
+    FirebaseAuthProvider,
+    // AngularFireDatabaseProvider
+
   ]
 })
 export class AppModule {}

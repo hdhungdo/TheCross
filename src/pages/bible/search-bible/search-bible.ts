@@ -91,6 +91,10 @@ export class SearchBiblePage {
   }
 
   close() {
+    this.viewCtrl.dismiss();
+  }
+
+  closeContent() {
     if (this.filter.length == 0) {
       this.viewCtrl.dismiss();
     }
