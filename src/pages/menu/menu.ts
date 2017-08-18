@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 
 /**
  * Generated class for the MenuPage page.
@@ -16,8 +16,28 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 export class MenuPage{
 
   rootPage:string = 'TabsPage';
+  pages = [{
+      page: 'CalendarPage',
+      name: 'Calendar',
+      icon: 'clock'
+    },
+    {
+      page: 'AboutPage',
+      name: 'About',
+      icon: 'information-circle'
+    },
+    {
+      page: 'SettingsPage',
+      name: 'Settings',
+      icon: 'cog'
+    },
+    {
+      page: 'HelpPage',
+      name: 'Help',
+      icon: 'help-circle'
+    }];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
 
   }
 
@@ -26,6 +46,7 @@ export class MenuPage{
   }
 
   goToAbout() {
+    this.menu.close('menu');
     this.navCtrl.push('AboutPage');
   }
 
@@ -39,6 +60,11 @@ export class MenuPage{
 
   goToHelp() {
     this.navCtrl.push('HelpPage');
+  }
+
+  goToPage(page) {
+    this.menu.close('menu');
+    this.navCtrl.push(page);
   }
 
 }

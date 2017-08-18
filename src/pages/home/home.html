@@ -5,5 +5,12 @@
 </ion-header>
 
 <ion-content padding>
-  
+  <ion-input [(ngModel)]="input"></ion-input>
+  <button ion-button block (click)="adddItems()">Add</button>
+  <ion-list>
+    <ion-item *ngFor="let item of items; let i = index" text-wrap (click)="printId(i)">
+      {{item.$key}}:{{item.item}}:{{item.value}}
+    </ion-item>
+  </ion-list>
+
 </ion-content>
