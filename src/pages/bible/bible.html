@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-navbar color="hdBrown">
+  <ion-navbar [color]="style.headerBackground">
 
-    <ion-buttons end>
+    <ion-buttons right>
       <button ion-button icon-only (click)="openFixTextSize($event)" class="topIcon">
         <ion-icon name="options"></ion-icon>
       </button>
@@ -10,8 +10,8 @@
       </button>
     </ion-buttons>
 
-    <ion-buttons>
-      <button text-nowrap (click)="openBookList($event)" class="uppercase" ion-button icon-right clear>
+    <ion-buttons left>
+      <button nowrap (click)="openBookList($event)" class="uppercase" ion-button icon-right clear>
         {{ bookName }}
         <ion-icon ios="md-arrow-dropdown" name="arrow-dropdown"></ion-icon>
       </button>
@@ -19,7 +19,6 @@
         {{ chapterIndex }}
         <ion-icon ios="md-arrow-dropdown" name="arrow-dropdown"></ion-icon>
       </button>
-
     </ion-buttons>
 
   </ion-navbar>
@@ -30,22 +29,22 @@
 <ion-content padding>
 
   <ion-fab bottom right>
-    <button ion-fab color="hdBrown" mini (click)="next()">
+    <button ion-fab [color]="style.headerBackground" mini (click)="next()">
       <ion-icon name="arrow-forward" md="ios-arrow-forward"></ion-icon>
     </button>
   </ion-fab>
 
   <ion-fab bottom left>
-    <button ion-fab color="hdBrown" mini (click)="back()">
+    <button ion-fab [color]="style.headerBackground" mini (click)="back()">
       <ion-icon name="arrow-back" md="ios-arrow-back"></ion-icon>
     </button>
   </ion-fab>
 
 
-  <div text-wrap *ngFor="let verse of verses">
+  <div text-wrap *ngFor="let verse of verses" (swipeleft)="next()" (swiperight)="back()">
     <div [class]="textSize + ' ' + verse.background" (click)="higlight(verse)">
       <b><i><sup [class]="verseSize" [id]="verse.key.toString()">{{verse.key}}.</sup></i></b>
-      {{verse.value}}
+      <span>{{verse.value}}</span>
     </div>
 
   </div>

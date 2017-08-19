@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import {Content, Events, IonicPage, ModalController} from 'ionic-angular';
 import { BibleServiceProvider } from "../../providers/bible-service/bible-service";
+import {StyleProvider} from "../../providers/style/style";
 
 /**
  * Generated class for the BiblePage page.
@@ -28,7 +29,8 @@ export class BiblePage {
   verseSize: string;
 
 
-  constructor(public events: Events, public modalCtrl: ModalController) {
+  constructor(public events: Events, public modalCtrl: ModalController,
+              public style: StyleProvider) {
   }
 
   ionViewDidLoad() {
@@ -150,6 +152,7 @@ export class BiblePage {
     modal.onDidDismiss(data => {
       if (data !== null && data !== undefined) {
         this.changeChapter(data);
+        this.ionContent.scrollToTop(500);
       }
     });
     modal.present({
@@ -172,7 +175,7 @@ export class BiblePage {
   scrollTo(element:string) {
     this.ionContent.resize();
     let yOffset = document.getElementById(element).offsetTop;
-    this.ionContent.scrollTo(0, yOffset, 1000);
+    this.ionContent.scrollTo(0, yOffset, 500);
   }
 
 }

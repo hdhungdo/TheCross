@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {StyleProvider} from "../../providers/style/style";
 
 /**
  * Generated class for the CalendarPage page.
@@ -15,7 +16,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CalendarPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public style: StyleProvider) {
   }
 
   ionViewDidLoad() {

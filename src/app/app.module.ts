@@ -10,11 +10,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { BibleServiceProvider } from '../providers/bible-service/bible-service';
 import { TranslateServiceProvider } from '../providers/translate-service/translate-service';
-// import { AngularFireDatabaseProvider} from 'angularfire2/database';
 import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CONFIG } from "./app.firebase.config";
 import { FirebaseDatabaseProvider } from '../providers/firebase-database/firebase-database';
-import {FirebaseAuthProvider} from "../providers/firebase-auth/firebase-auth";
+import { FirebaseAuthProvider } from "../providers/firebase-auth/firebase-auth";
+import { StyleProvider } from '../providers/style/style';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import {FirebaseAuthProvider} from "../providers/firebase-auth/firebase-auth";
     TranslateServiceProvider,
     FirebaseDatabaseProvider,
     FirebaseAuthProvider,
-    // AngularFireDatabaseProvider
+    StyleProvider,
 
   ]
 })

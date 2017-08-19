@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController} from 'ionic-angular';
 import {FirebaseDatabaseProvider} from "../../providers/firebase-database/firebase-database";
+import {StyleProvider} from "../../providers/style/style";
 
 @IonicPage()
 @Component({
@@ -11,7 +12,8 @@ export class HomePage {
   items = [];
   input;
 
-  constructor(public navCtrl: NavController, public afDB: FirebaseDatabaseProvider) {
+  constructor(public navCtrl: NavController, public afDB: FirebaseDatabaseProvider,
+              public style: StyleProvider) {
     // this.afDB.getItems().subscribe(data => {
     //   this.items = data;
     // });

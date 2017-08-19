@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>Chapters</ion-title>
-    <ion-buttons start>
-      <button ion-button (click)="close()" icon-only>
-        <ion-icon name="close-circle"></ion-icon>
+    <ion-buttons left>
+      <button ion-button (click)="close()" icon-only style="margin: 0px 10px">
+        <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -11,8 +11,8 @@
 <ion-content>
   <ion-grid>
     <ion-row *ngFor="let row of grid">
-      <ion-col col-3 *ngFor="let col of row">
-        <div class="hd-div" [class]="col.background + ' hd-div'" [ngStyle]="{'text-align': 'center'}" (click)="change(col.chap)">{{col.chap}}</div>
+      <ion-col col-3 *ngFor="let col of row" class="column">
+        <div [class]="col.background + ' hd-div'" [ngStyle]="{'text-align': 'center'}" (click)="change(col.chap)">{{col.chap}}</div>
       </ion-col>
     </ion-row>
   </ion-grid>

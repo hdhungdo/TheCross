@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, MenuController} from "ionic-angular";
+import {StyleProvider} from "../../providers/style/style";
 
 @IonicPage()
 @Component({
@@ -17,7 +18,8 @@ export class TabsPage {
   taskTitle = 'Tasks';
   menuTitle = 'Menu';
 
-  constructor(public menu: MenuController) {
+  constructor(public menu: MenuController,
+              public style: StyleProvider) {
 
   }
 

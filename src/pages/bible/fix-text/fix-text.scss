@@ -2,4 +2,67 @@ page-fix-text {
   .contentBackground {
     background-color: rgba(60,60,60,0.35);
   }
+  .dot-primary {
+    background-color: #488aff;
+  }
+
+  .dot-light {
+    background-color: #f4f4f4;
+  }
+
+  .dot-grey {
+    background-color: #8f8f8f;
+  }
+
+  .dot-brown {
+    background-color: #685751;
+  }
+
+  .dot-red {
+    background-color: #f53d3d;
+  }
+
+  .dot-green {
+    background-color: #00756b;
+  }
+
+  .dot-hdSkin {
+    background-color: #ffecdd;
+  }
+
+  .dot-hdPurple {
+    background-color: #5e0087;
+  }
+
+  .dot-yellow {
+    background-color: #ffff00;
+  }
+
+  .dot-hdPink {
+    background-color: #fad8ff;
+  }
+
+  .dot-hdOrange {
+    background-color: #ffc249;
+  }
+
+  .dot-dark {
+    background-color: #222222;
+  }
+
+
+  .row-dots {
+    text-align: center;
+  }
+
+  .circle {
+    display: block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 2px solid #ffecdd;
+    margin: 10px 5px;
+    position: relative;
+  }
 }
+

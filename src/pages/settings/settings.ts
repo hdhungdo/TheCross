@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Events, IonicPage, ViewController} from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import {StyleProvider} from "../../providers/style/style";
 
 /**
  * Generated class for the SettingsPage page.
@@ -19,7 +20,8 @@ export class SettingsPage {
   size = 12;
 
   constructor(public viewCtrl: ViewController, public events: Events,
-              public storage: Storage) {}
+              public storage: Storage,
+              public style: StyleProvider) {}
 
   ionViewDidLoad() {
     this.storage.get('fontSize').then((data) => {

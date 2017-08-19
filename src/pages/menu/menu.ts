@@ -27,14 +27,14 @@ export class MenuPage{
       icon: 'information-circle'
     },
     {
-      page: 'SettingsPage',
-      name: 'Settings',
-      icon: 'cog'
-    },
-    {
       page: 'HelpPage',
       name: 'Help',
       icon: 'help-circle'
+    },
+    {
+      page: 'SettingsPage',
+      name: 'Settings',
+      icon: 'construct'
     }];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
@@ -45,21 +45,8 @@ export class MenuPage{
 
   }
 
-  goToAbout() {
+  close() {
     this.menu.close('menu');
-    this.navCtrl.push('AboutPage');
-  }
-
-  goToCalendar() {
-    this.navCtrl.push('CalendarPage');
-  }
-
-  goToSetting() {
-    this.navCtrl.push('SettingsPage');
-  }
-
-  goToHelp() {
-    this.navCtrl.push('HelpPage');
   }
 
   goToPage(page) {

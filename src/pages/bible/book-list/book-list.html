@@ -1,9 +1,9 @@
 <ion-header>
   <ion-navbar color="dark">
     <ion-title>Books</ion-title>
-    <ion-buttons start>
-      <button ion-button (click)="close()" icon-only>
-        <ion-icon name="close-circle"></ion-icon>
+    <ion-buttons left>
+      <button ion-button (click)="close()" icon-only style="margin: 0px 10px">
+        <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -12,8 +12,8 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div>
-    <span *ngFor="let book of books" ion-item (click)="change(book.index)">{{ book.name }}</span>
-  </div>
+    <div class="list-book" *ngFor="let book of books" (click)="change(book.index)">
+      {{ book.name }}
+    </div>
 </ion-content>
 
