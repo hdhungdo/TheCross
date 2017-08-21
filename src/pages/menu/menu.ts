@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
+import {FirebaseAuthProvider} from "../../providers/firebase-auth/firebase-auth";
 
 /**
  * Generated class for the MenuPage page.
@@ -37,7 +38,8 @@ export class MenuPage{
       icon: 'construct'
     }];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public menu: MenuController, public fireAuth: FirebaseAuthProvider) {
 
   }
 
@@ -52,6 +54,11 @@ export class MenuPage{
   goToPage(page) {
     this.menu.close('menu');
     this.navCtrl.push(page);
+  }
+
+  signOut() {
+    this.menu.close('menu');
+    this.fireAuth.signedIn = false;
   }
 
 }

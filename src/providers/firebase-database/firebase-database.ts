@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class FirebaseDatabaseProvider {
 
   constructor() {
-    console.log('Hello FirebaseDatabaseProvider Provider');
+
   }
 
   // getItems() {

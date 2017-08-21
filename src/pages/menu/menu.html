@@ -15,8 +15,11 @@
         </button>
       </ion-buttons>
       <ion-buttons right>
-        <button ion-button block="">
+        <button *ngIf="!fireAuth.signedIn" ion-button block (click)="goToPage('LoginPage')">
           Sign in
+        </button>
+        <button *ngIf="fireAuth.signedIn" ion-button block (click)="signOut()">
+          Sign out
         </button>
       </ion-buttons>
     </ion-navbar>

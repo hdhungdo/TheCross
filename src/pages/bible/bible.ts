@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import {Content, Events, IonicPage, ModalController} from 'ionic-angular';
+import {ActionSheetController, Content, Events, IonicPage, ModalController, Platform} from 'ionic-angular';
 import { BibleServiceProvider } from "../../providers/bible-service/bible-service";
 import {StyleProvider} from "../../providers/style/style";
 
@@ -30,7 +30,8 @@ export class BiblePage {
 
 
   constructor(public events: Events, public modalCtrl: ModalController,
-              public style: StyleProvider) {
+              public style: StyleProvider, public actionsheetCtrl: ActionSheetController,
+              public platform: Platform) {
   }
 
   ionViewDidLoad() {
@@ -81,14 +82,6 @@ export class BiblePage {
   changeChapter(value: any) {
     BibleServiceProvider.update(BibleServiceProvider.bookIndex, value - 1);
     this.update();
-  }
-
-  higlight(verse) {
-    if (verse.background === '') {
-      verse.background = 'highlight';
-    } else {
-      verse.background = '';
-    }
   }
 
   next() {
@@ -178,4 +171,43 @@ export class BiblePage {
     this.ionContent.scrollTo(0, yOffset, 500);
   }
 
+  higlight(verse) {
+    if (verse.background === '') {
+      verse.background = 'highlight';
+      this.displayActionSheet(verse);
+    } else {
+      verse.background = '';
+    }
+  }
+
+  displayActionSheet(verse) {
+    let actionSheet = this.actionsheetCtrl.create({
+      cssClass: 'action-sheets-basic-page',
+      buttons: [
+        {
+          text: 'Copy',
+          icon: !this.platform.is('ios') ? 'copy' : null,
+          handler: () => {
+            verse.background = '';
+          }
+        },
+        {
+          text: 'Share',
+          icon: !this.platform.is('ios') ? 'share' : null,
+          handler: () => {
+            verse.background = '';
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel', // will always sort to be on the bottom
+          icon: !this.platform.is('ios') ? 'close' : null,
+          handler: () => {
+            verse.background = '';
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
 }

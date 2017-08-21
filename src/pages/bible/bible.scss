@@ -179,3 +179,16 @@ page-bible {
     color: coral;
   }
 }
+
+.action-sheets-basic-page {
+  .ion-md-share {
+    color: #f53d3d;
+  }
+  .ion-md-copy {
+    color: #488aff;
+  }
+  .action-sheet-cancel ion-icon,
+  .action-sheet-destructive ion-icon {
+    color: #757575;
+  }
+}

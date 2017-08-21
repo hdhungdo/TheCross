@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {FirebaseAuthProvider} from "../../../providers/firebase-auth/firebase-auth";
 
 /**
  * Generated class for the LoginPage page.
@@ -15,11 +16,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public fireAuth: FirebaseAuthProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  signedIn() {
+    this.fireAuth.signedIn = true;
+    this.navCtrl.pop();
   }
 
 }

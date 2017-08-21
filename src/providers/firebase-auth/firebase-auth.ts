@@ -12,8 +12,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class FirebaseAuthProvider {
 
+  signedIn: boolean = false;
+
   constructor(public http: Http) {
-    console.log('Hello FirebaseAuthProvider Provider');
+
   }
 
 }
