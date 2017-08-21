@@ -10,16 +10,16 @@
     <ion-navbar color="dark">
       <ion-title>Menu</ion-title>
       <ion-buttons left>
-        <button ion-button (click)="close()" icon-only style="margin: 0px 10px">
+        <button ion-button (click)="close()" icon-only style="margin: 0 10px">
           <ion-icon name="arrow-back"></ion-icon>
         </button>
       </ion-buttons>
       <ion-buttons right>
-        <button *ngIf="!fireAuth.signedIn" ion-button block (click)="goToPage('LoginPage')">
-          Sign in
+        <button *ngIf="!fireAuth.signedIn" ion-button block (click)="goToPage('LoginPage')" class="sign">
+          Sign In
         </button>
-        <button *ngIf="fireAuth.signedIn" ion-button block (click)="signOut()">
-          Sign out
+        <button *ngIf="fireAuth.signedIn" ion-button block (click)="signOut()" class="sign">
+          Sign Out
         </button>
       </ion-buttons>
     </ion-navbar>

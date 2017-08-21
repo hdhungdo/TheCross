@@ -147,6 +147,9 @@ page-bible {
 
   .topIcon {
     margin-right: 7px;
+    margin-left: 0;
+    padding-left: 0;
+    padding-right: 0;
     text-transform: none;
     font-size: 10pt;
   }
@@ -168,6 +171,8 @@ page-bible {
   .uppercase {
     text-transform: uppercase;
     font-size: 10pt;
+    margin: 0;
+    padding: 0 0 0 5px;
   }
 
   div.copyRight {
@@ -187,8 +192,22 @@ page-bible {
   .ion-md-copy {
     color: #488aff;
   }
+  .ion-wp-share {
+    color: #f53d3d;
+  }
+  .ion-wp-copy {
+    color: #488aff;
+  }
   .action-sheet-cancel ion-icon,
   .action-sheet-destructive ion-icon {
     color: #757575;
+  }
+}
+
+.toastCSS {
+  text-align: center;
+  > div{
+    background-color:#222222!important;
+    width: 50%!important;
   }
 }

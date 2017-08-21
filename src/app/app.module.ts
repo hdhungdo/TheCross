@@ -15,6 +15,7 @@ import { FIREBASE_CONFIG } from "./app.firebase.config";
 import { FirebaseDatabaseProvider } from '../providers/firebase-database/firebase-database';
 import { FirebaseAuthProvider } from "../providers/firebase-auth/firebase-auth";
 import { StyleProvider } from '../providers/style/style';
+import {Clipboard} from "@ionic-native/clipboard";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { StyleProvider } from '../providers/style/style';
     FirebaseDatabaseProvider,
     FirebaseAuthProvider,
     StyleProvider,
-
+    Clipboard,
   ]
 })
 export class AppModule {}

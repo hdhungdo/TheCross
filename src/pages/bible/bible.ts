@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import {ActionSheetController, Content, Events, IonicPage, ModalController, Platform} from 'ionic-angular';
+import {ActionSheetController, ToastController, Content, Events, IonicPage, ModalController, Platform} from 'ionic-angular';
 import { BibleServiceProvider } from "../../providers/bible-service/bible-service";
 import {StyleProvider} from "../../providers/style/style";
+import { Clipboard } from '@ionic-native/clipboard';
 
 /**
  * Generated class for the BiblePage page.
@@ -29,9 +30,12 @@ export class BiblePage {
   verseSize: string;
 
 
+
   constructor(public events: Events, public modalCtrl: ModalController,
               public style: StyleProvider, public actionsheetCtrl: ActionSheetController,
-              public platform: Platform) {
+              public platform: Platform, public clipboard: Clipboard,
+              public toast: ToastController) {
+
   }
 
   ionViewDidLoad() {
@@ -114,6 +118,18 @@ export class BiblePage {
     this.update();
   }
 
+  checkKey(e) {
+    if (e.keyCode == '37') {
+      // left arrow
+      this.back();
+    }
+    else if (e.keyCode == '39') {
+      // right arrow
+      this.next();
+    }
+
+  }
+
   openFixTextSize(myEvent) {
     let modal = this.modalCtrl.create('FixTextPage', {fontSize: BibleServiceProvider.textSize});
     modal.present({
@@ -172,7 +188,7 @@ export class BiblePage {
   }
 
   higlight(verse) {
-    if (verse.background === '') {
+    if (verse.background === '' && !this.isWebFlatform()) {
       verse.background = 'highlight';
       this.displayActionSheet(verse);
     } else {
@@ -189,6 +205,14 @@ export class BiblePage {
           icon: !this.platform.is('ios') ? 'copy' : null,
           handler: () => {
             verse.background = '';
+            this.clipboard.copy(this.getVerseToString(verse));
+            this.toast.create({
+              message: 'Copied',
+              duration: 1000,
+              position: 'middle',
+              cssClass: 'toastCSS'
+            }).present();
+
           }
         },
         {
@@ -209,5 +233,14 @@ export class BiblePage {
       ]
     });
     actionSheet.present();
+  }
+
+  getVerseToString(verse): string {
+    return verse.value + ' (' + this.bookName + ' ' + this.chapterIndex + ':' + verse.key + ')';
+  }
+
+  isWebFlatform() {
+    return !(this.platform.is('ios') || this.platform.is('android')
+      || this.platform.is('windows'));
   }
 }
