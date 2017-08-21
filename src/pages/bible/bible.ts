@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import {ActionSheetController, ToastController, Content, Events, IonicPage, ModalController, Platform} from 'ionic-angular';
+import { ActionSheetController, ToastController, Content, Events, IonicPage, ModalController, Platform } from 'ionic-angular';
 import { BibleServiceProvider } from "../../providers/bible-service/bible-service";
-import {StyleProvider} from "../../providers/style/style";
+import { StyleProvider } from "../../providers/style/style";
 import { Clipboard } from '@ionic-native/clipboard';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 /**
  * Generated class for the BiblePage page.
@@ -34,7 +35,7 @@ export class BiblePage {
   constructor(public events: Events, public modalCtrl: ModalController,
               public style: StyleProvider, public actionsheetCtrl: ActionSheetController,
               public platform: Platform, public clipboard: Clipboard,
-              public toast: ToastController) {
+              public toast: ToastController, public socialShare: SocialSharing) {
 
   }
 
@@ -220,6 +221,7 @@ export class BiblePage {
           icon: !this.platform.is('ios') ? 'share' : null,
           handler: () => {
             verse.background = '';
+            this.socialShare.share(this.getVerseToString(verse), null, null, null);
           }
         },
         {

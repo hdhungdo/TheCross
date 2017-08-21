@@ -16,6 +16,7 @@ import { FirebaseDatabaseProvider } from '../providers/firebase-database/firebas
 import { FirebaseAuthProvider } from "../providers/firebase-auth/firebase-auth";
 import { StyleProvider } from '../providers/style/style';
 import {Clipboard} from "@ionic-native/clipboard";
+import {SocialSharing} from "@ionic-native/social-sharing";
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import {Clipboard} from "@ionic-native/clipboard";
     FirebaseAuthProvider,
     StyleProvider,
     Clipboard,
+    SocialSharing
   ]
 })
 export class AppModule {}
