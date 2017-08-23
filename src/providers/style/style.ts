@@ -10,8 +10,8 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class StyleProvider {
 
-  headerBackground: string = 'light';
-  tabsBackground: string = 'light';
+  headerBackground: string = 'hdGreen';
+  tabsBackground: string = 'hdGreen';
 
   constructor(public storage: Storage) {
     this.storage.get('style').then((data) => {

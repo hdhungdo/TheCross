@@ -1,9 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { ActionSheetController, ToastController, Content, Events, IonicPage, ModalController, Platform } from 'ionic-angular';
+import { ActionSheetController, ToastController, Content, Events, IonicPage, ModalController } from 'ionic-angular';
 import { BibleServiceProvider } from "../../providers/bible-service/bible-service";
 import { StyleProvider } from "../../providers/style/style";
 import { Clipboard } from '@ionic-native/clipboard';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import {DeviceProvider} from "../../providers/device/device";
 
 /**
  * Generated class for the BiblePage page.
@@ -33,8 +34,8 @@ export class BiblePage {
 
 
   constructor(public events: Events, public modalCtrl: ModalController,
-              public style: StyleProvider, public actionsheetCtrl: ActionSheetController,
-              public platform: Platform, public clipboard: Clipboard,
+              public style: StyleProvider, public actionSheetCtrl: ActionSheetController,
+              public device: DeviceProvider, public clipboard: Clipboard,
               public toast: ToastController, public socialShare: SocialSharing) {
 
   }
@@ -189,7 +190,7 @@ export class BiblePage {
   }
 
   higlight(verse) {
-    if (verse.background === '' && !this.isWebFlatform()) {
+    if (verse.background === '' && !this.device.isWeb) {
       verse.background = 'highlight';
       this.displayActionSheet(verse);
     } else {
@@ -198,18 +199,19 @@ export class BiblePage {
   }
 
   displayActionSheet(verse) {
-    let actionSheet = this.actionsheetCtrl.create({
+    let str = this.getVerseToString(verse);
+    let actionSheet = this.actionSheetCtrl.create({
       cssClass: 'action-sheets-basic-page',
       buttons: [
         {
           text: 'Copy',
-          icon: !this.platform.is('ios') ? 'copy' : null,
+          icon: !this.device.isIOS ? 'copy' : null,
           handler: () => {
             verse.background = '';
-            this.clipboard.copy(this.getVerseToString(verse));
+            this.clipboard.copy(str);
             this.toast.create({
               message: 'Copied',
-              duration: 1000,
+              duration: 1500,
               position: 'middle',
               cssClass: 'toastCSS'
             }).present();
@@ -218,16 +220,16 @@ export class BiblePage {
         },
         {
           text: 'Share',
-          icon: !this.platform.is('ios') ? 'share' : null,
+          icon: !this.device.isIOS ? 'share' : null,
           handler: () => {
             verse.background = '';
-            this.socialShare.share(this.getVerseToString(verse), null, null, null);
+            this.socialShare.share(str, null, null, null);
           }
         },
         {
           text: 'Cancel',
           role: 'cancel', // will always sort to be on the bottom
-          icon: !this.platform.is('ios') ? 'close' : null,
+          icon: !this.device.isIOS ? 'close' : null,
           handler: () => {
             verse.background = '';
           }
@@ -241,8 +243,4 @@ export class BiblePage {
     return verse.value + ' (' + this.bookName + ' ' + this.chapterIndex + ':' + verse.key + ')';
   }
 
-  isWebFlatform() {
-    return !(this.platform.is('ios') || this.platform.is('android')
-      || this.platform.is('windows'));
-  }
 }
