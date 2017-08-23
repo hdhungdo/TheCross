@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavParams, ViewController} from 'ionic-angular';
-import {BibleServiceProvider} from "../../../providers/bible-service/bible-service";
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import { BibleServiceProvider } from "../../../providers/bible-service/bible-service";
 
 /**
  * Generated class for the ChapterPage page.

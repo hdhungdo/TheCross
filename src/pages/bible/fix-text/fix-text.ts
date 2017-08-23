@@ -32,10 +32,4 @@ export class FixTextPage {
   close() {
     this.viewCtrl.dismiss();
   }
-
-  changeHeaderBackground(value) {
-    this.style.headerBackground = value;
-    this.style.tabsBackground = value;
-    this.style.saveStyle();
-  }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the BookListPage page.
@@ -18,7 +18,7 @@ export class BookListPage {
   books;
   index;
 
-  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
     this.books = this.navParams.get('books');
     this.index = this.navParams.get('bookIndex');
   }

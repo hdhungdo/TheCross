@@ -15,8 +15,8 @@ import { FIREBASE_CONFIG } from "./app.firebase.config";
 import { FirebaseDatabaseProvider } from '../providers/firebase-database/firebase-database';
 import { FirebaseAuthProvider } from "../providers/firebase-auth/firebase-auth";
 import { StyleProvider } from '../providers/style/style';
-import {Clipboard} from "@ionic-native/clipboard";
-import {SocialSharing} from "@ionic-native/social-sharing";
+import { Clipboard } from "@ionic-native/clipboard";
+import { SocialSharing } from "@ionic-native/social-sharing";
 import { DeviceProvider } from '../providers/device/device';
 
 @NgModule({

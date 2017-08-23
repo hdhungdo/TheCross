@@ -4,7 +4,7 @@ import { BibleServiceProvider } from "../../providers/bible-service/bible-servic
 import { StyleProvider } from "../../providers/style/style";
 import { Clipboard } from '@ionic-native/clipboard';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import {DeviceProvider} from "../../providers/device/device";
+import { DeviceProvider } from "../../providers/device/device";
 
 /**
  * Generated class for the BiblePage page.
