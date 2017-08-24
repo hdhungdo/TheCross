@@ -15,11 +15,11 @@
         </button>
       </ion-buttons>
       <ion-buttons right>
-        <button *ngIf="!fireAuth.signedIn" ion-button block (click)="goToPage('LoginPage')" class="sign">
-          Sign In
+        <button *ngIf="!fireAuth.signedIn" ion-button style="color: deepskyblue" block (click)="goToPage('LoginPage')" class="sign">
+          <b>Sign In</b>
         </button>
-        <button *ngIf="fireAuth.signedIn" ion-button block (click)="signOut()" class="sign">
-          Sign Out
+        <button *ngIf="fireAuth.signedIn" ion-button style="color: lightsalmon" block (click)="signOut()" class="sign">
+          <b>Sign Out</b>
         </button>
       </ion-buttons>
     </ion-navbar>
@@ -28,6 +28,12 @@
   <ion-content>
 
     <ion-list no-lines>
+      <button *ngIf="fireAuth.signedIn" ion-item (click)="goToPage('ProfilePage')">
+        <ion-icon name="contact" small class="menus"></ion-icon>
+        Profile
+      </button>
+      <ion-item-divider *ngIf="fireAuth.signedIn" color="light"></ion-item-divider>
+
       <button ion-item *ngFor="let page of pages" (click)="goToPage(page.page)">
         <ion-icon [name]="page.icon" sm class="menus"></ion-icon>
         {{page.name}}

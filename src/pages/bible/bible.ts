@@ -211,7 +211,7 @@ export class BiblePage {
             this.clipboard.copy(str);
             this.toast.create({
               message: 'Copied',
-              duration: 1500,
+              duration: 1000,
               position: 'middle',
               cssClass: 'toastCSS'
             }).present();

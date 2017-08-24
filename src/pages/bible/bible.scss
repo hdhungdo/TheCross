@@ -187,20 +187,20 @@ page-bible {
 
 .action-sheets-basic-page {
   .ion-md-share {
-    color: #f53d3d;
+    color: #488aff;
   }
   .ion-md-copy {
+    color: #00756b;
+  }
+  .ion-ios-share {
     color: #488aff;
   }
-  .ion-wp-share {
-    color: #f53d3d;
-  }
-  .ion-wp-copy {
-    color: #488aff;
+  .ion-ios-copy {
+    color: #00756b;
   }
   .action-sheet-cancel ion-icon,
   .action-sheet-destructive ion-icon {
-    color: #757575;
+    color: #f53d3d;
   }
 }
 
