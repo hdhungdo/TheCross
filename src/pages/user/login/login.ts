@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {FirebaseAuthProvider} from "../../../providers/firebase-auth/firebase-auth";
+import {StyleProvider} from "../../../providers/style/style";
 
 /**
  * Generated class for the LoginPage page.
@@ -17,7 +18,7 @@ import {FirebaseAuthProvider} from "../../../providers/firebase-auth/firebase-au
 export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public fireAuth: FirebaseAuthProvider) {
+              public fireAuth: FirebaseAuthProvider, public style: StyleProvider) {
   }
 
   ionViewDidLoad() {
