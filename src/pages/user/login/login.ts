@@ -30,4 +30,8 @@ export class LoginPage {
     this.navCtrl.pop();
   }
 
+  goToRegister() {
+    this.navCtrl.push('RegisterPage');
+  }
+
 }

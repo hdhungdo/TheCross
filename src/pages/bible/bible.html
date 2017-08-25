@@ -42,7 +42,7 @@
 
 
   <div text-wrap *ngFor="let verse of verses" (swipeleft)="next()" (swiperight)="back()">
-    <div [class]="textSize + ' ' + verse.background" (click)="higlight(verse)">
+    <div [class]="textSize + ' ' + verse.background" (click)="higlight(verse)" style="text-indent: 1em;">
       <b><i><sup [class]="verseSize" [id]="verse.key.toString()">{{verse.key}}.</sup></i></b>
       <span>{{verse.value}}</span>
     </div>
