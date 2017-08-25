@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { FirebaseAuthProvider } from "../../../providers/firebase-auth/firebase-auth";
 import { StyleProvider } from "../../../providers/style/style";
 import { Usercreds } from "../../../models/usercreds";
+import { DeviceProvider } from "../../../providers/device/device";
 
 /**
  * Generated class for the LoginPage page.
@@ -20,7 +21,7 @@ export class LoginPage {
 
   credentials = {} as Usercreds;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public device: DeviceProvider,
               public fireAuth: FirebaseAuthProvider, public style: StyleProvider) {
   }
 
@@ -35,6 +36,7 @@ export class LoginPage {
         this.navCtrl.pop();
       } else {
         alert(respond);
+        console.log(respond);
       }
     });
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Events, IonicPage, NavParams, ViewController} from 'ionic-angular';
+import {Events, IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
 import {StyleProvider} from "../../../providers/style/style";
 
 /**
@@ -17,7 +17,7 @@ import {StyleProvider} from "../../../providers/style/style";
 export class FixTextPage {
   size = 12;
 
-  constructor(public viewCtrl: ViewController, public navParams: NavParams,
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, public navParams: NavParams,
               public events: Events, public style: StyleProvider) {}
 
   ionViewDidLoad() {
@@ -30,6 +30,11 @@ export class FixTextPage {
   }
 
   close() {
+    this.viewCtrl.dismiss();
+  }
+
+  goToSystem() {
+    this.navCtrl.push('SettingsPage');
     this.viewCtrl.dismiss();
   }
 }

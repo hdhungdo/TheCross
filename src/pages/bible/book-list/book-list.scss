@@ -1,9 +1,18 @@
 page-book-list {
-  .list-book {
+  .light {
     display: block;
     padding: 20px;
     font-size: 13pt;
     font-family: 'AvenirNextLTPro-Regular', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
     border-bottom: solid 1px #8f8f8f;
+  }
+  .dark {
+    display: block;
+    padding: 20px;
+    font-size: 13pt;
+    font-family: 'AvenirNextLTPro-Regular', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+    border-bottom: solid 1px #fff9cc;
+    background-color: black;
+    color: white;
   }
 }

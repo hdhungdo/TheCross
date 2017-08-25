@@ -4,14 +4,16 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-card>
-    <ion-card-content>
+  <div [class]="device.isWeb ? 'webCard':'mobileCard'">
+    <div>
       <ion-list no-line inset>
         <ion-item class="usernameStyle">
-          <ion-input type="email" placeholder="Email" [(ngModel)]="credentials.email"></ion-input>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="email" [(ngModel)]="credentials.email"></ion-input>
         </ion-item>
         <ion-item class="passwordStyle">
-          <ion-input type="password" placeholder="Password" [(ngModel)]="credentials.password"></ion-input>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="credentials.password"></ion-input>
         </ion-item>
         <div>Forgot your login detail? <b><a>Get Help</a></b></div>
         <button class="loginBtnStyle" color="dark" (click)="signedIn()" ion-button block outline>Log in</button>
@@ -20,7 +22,7 @@
           <ion-icon name="logo-facebook"></ion-icon> Login with facebook
         </button>
       </ion-list>
-    </ion-card-content>
+    </div>
     <div class="blackText">Don't have an account? <b><a class="signUpStyle" (click)="goToRegister()">SIGN UP</a></b></div>
-  </ion-card>
+  </div>
 </ion-content>

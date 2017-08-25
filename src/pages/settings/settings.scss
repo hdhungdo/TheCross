@@ -1,6 +1,8 @@
 page-settings {
-  .scroll-content {
-    display: flex;
-    flex-direction: column;
+  div.content {
+    position: relative;
+    margin: auto;
+    max-width: 500px;
+    width: auto;
   }
 }

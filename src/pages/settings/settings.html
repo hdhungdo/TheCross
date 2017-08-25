@@ -7,23 +7,24 @@
 <ion-header>
 
   <ion-navbar [color]="style.headerBackground">
-    <ion-title>settings</ion-title>
+    <ion-title>Settings</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <ion-card style="align-self: center; max-width: 500px; padding-left: 10px; padding-right: 10px">
-    <ion-range min="8" max="32" [(ngModel)]="size" (ionChange)="change(size)" color="dark">
-      <ion-icon range-left small color="dark">Text Size</ion-icon>
-      <ion-icon range-right color="dark">{{size}}pt</ion-icon>
-    </ion-range>
-  </ion-card>
-  <ion-card style="align-self: center; max-width: 500px">
-    <ion-card-header>Theme</ion-card-header>
-    <hd-theme></hd-theme>
-  </ion-card>
-
+  <div class="content">
+    <ion-card style="align-self: center; max-width: 500px; padding-left: 10px; padding-right: 10px">
+      <ion-range min="8" max="32" [(ngModel)]="size" (ionChange)="change(size)" color="dark">
+        <ion-icon range-left small color="dark">Text Size</ion-icon>
+        <ion-icon range-right color="dark">{{size}}pt</ion-icon>
+      </ion-range>
+    </ion-card>
+    <ion-card style="align-self: center; max-width: 500px">
+      <ion-card-header><b>Theme</b></ion-card-header>
+      <hd-theme></hd-theme>
+    </ion-card>
+  </div>
 
 </ion-content>

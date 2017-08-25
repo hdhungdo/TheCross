@@ -8,7 +8,7 @@
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content [class]="backgroundStyle">
   <ion-grid>
     <ion-row *ngFor="let row of grid">
       <ion-col col-3 *ngFor="let col of row" class="column">

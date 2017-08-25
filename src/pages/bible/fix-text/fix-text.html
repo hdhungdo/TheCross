@@ -5,17 +5,25 @@
       Adjustment
     </ion-title>
     <ion-buttons left>
-      <button ion-button (click)="close()" icon-only style="margin: 0px 10px">
+      <button ion-button (click)="close()" icon-only style="margin: 0 10px">
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
+    <ion-buttons right>
+      <button ion-button (click)="goToSystem()" icon-only style="margin-right: 10px">
+        <ion-icon name="construct"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-  <ion-item>
+  <ion-item no-lines style="padding-right: 10px!important;">
     <ion-range min="8" max="32" [(ngModel)]="size" (ionChange)="change(size)" color="dark">
       <ion-icon range-left small color="dark">Text Size</ion-icon>
       <ion-icon range-right color="dark">{{size}}pt</ion-icon>
     </ion-range>
   </ion-item>
-  <hd-theme></hd-theme>
+  <ion-item>
+    <ion-label>Bible Dark Theme</ion-label>
+    <ion-toggle [(ngModel)]="style.bibleDarkThemeToggle" (click)="style.saveStyle()" [color]="style.headerBackground"></ion-toggle>
+  </ion-item>
 </ion-footer>
 

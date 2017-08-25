@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 import { BibleServiceProvider } from "../../../providers/bible-service/bible-service";
+import {StyleProvider} from "../../../providers/style/style";
 
 /**
  * Generated class for the ChapterPage page.
@@ -17,10 +18,13 @@ import { BibleServiceProvider } from "../../../providers/bible-service/bible-ser
 export class ChapterPage {
 
   chapters;
+  backgroundStyle;
 
   grid = [];
 
-  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams,
+              public style: StyleProvider) {
+    this.backgroundStyle = this.style.bibleDarkThemeToggle ? 'dark':'light';
   }
 
   ionViewDidLoad() {
