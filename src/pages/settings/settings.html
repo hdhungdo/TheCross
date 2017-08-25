@@ -14,13 +14,13 @@
 
 
 <ion-content>
-  <ion-card style="padding-left: 10px; padding-right: 10px">
+  <ion-card style="align-self: center; max-width: 500px; padding-left: 10px; padding-right: 10px">
     <ion-range min="8" max="32" [(ngModel)]="size" (ionChange)="change(size)" color="dark">
       <ion-icon range-left small color="dark">Text Size</ion-icon>
       <ion-icon range-right color="dark">{{size}}pt</ion-icon>
     </ion-range>
   </ion-card>
-  <ion-card>
+  <ion-card style="align-self: center; max-width: 500px">
     <ion-card-header>Theme</ion-card-header>
     <hd-theme></hd-theme>
   </ion-card>

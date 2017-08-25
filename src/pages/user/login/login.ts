@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {FirebaseAuthProvider} from "../../../providers/firebase-auth/firebase-auth";
-import {StyleProvider} from "../../../providers/style/style";
+import { FirebaseAuthProvider } from "../../../providers/firebase-auth/firebase-auth";
+import { StyleProvider } from "../../../providers/style/style";
+import { Usercreds } from "../../../models/usercreds";
 
 /**
  * Generated class for the LoginPage page.
@@ -17,17 +18,25 @@ import {StyleProvider} from "../../../providers/style/style";
 })
 export class LoginPage {
 
+  credentials = {} as Usercreds;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public fireAuth: FirebaseAuthProvider, public style: StyleProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+
   }
 
   signedIn() {
-    this.fireAuth.signedIn = true;
-    this.navCtrl.pop();
+    this.fireAuth.login(this.credentials).then((respond: any) => {
+      if (!respond.code) {
+        this.fireAuth.signedIn = true;
+        this.navCtrl.pop();
+      } else {
+        alert(respond);
+      }
+    });
   }
 
   goToRegister() {

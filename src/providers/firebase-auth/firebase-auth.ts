@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-// import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth } from 'angularfire2/auth';
 import 'rxjs/add/operator/map';
+import {Usercreds} from "../../models/usercreds";
 
 /*
   Generated class for the FirebaseAuthProvider provider.
@@ -14,8 +14,21 @@ export class FirebaseAuthProvider {
 
   signedIn: boolean = false;
 
-  constructor(public http: Http) {
+  constructor(public afAuth: AngularFireAuth) {
 
+  }
+
+  login(credentials: Usercreds) {
+    let promise = new Promise((resole, reject) => {
+      this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
+        .then(() => {
+          resole(true);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+    return promise;
   }
 
 }

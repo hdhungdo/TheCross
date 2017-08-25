@@ -18,6 +18,7 @@ import { StyleProvider } from '../providers/style/style';
 import { Clipboard } from "@ionic-native/clipboard";
 import { SocialSharing } from "@ionic-native/social-sharing";
 import { DeviceProvider } from '../providers/device/device';
+import {AngularFireAuthModule} from "angularfire2/auth";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DeviceProvider } from '../providers/device/device';
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    AngularFireModule.initializeApp(FIREBASE_CONFIG)
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

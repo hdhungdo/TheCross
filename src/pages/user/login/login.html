@@ -4,25 +4,23 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-card style="max-width: 500px; align-self: center;">
+  <ion-card>
     <ion-card-content>
       <ion-list no-line inset>
-        <ion-item style="border-bottom: 1px solid gainsboro; margin-top: 25px">
-          <ion-label>Username</ion-label>
-          <ion-input type="text"></ion-input>
+        <ion-item class="usernameStyle">
+          <ion-input type="email" placeholder="Email" [(ngModel)]="credentials.email"></ion-input>
         </ion-item>
-        <ion-item style="margin-bottom: 25px!important; border-bottom: 1px solid gainsboro">
-          <ion-label>Password</ion-label>
-          <ion-input type="password"></ion-input>
+        <ion-item class="passwordStyle">
+          <ion-input type="password" placeholder="Password" [(ngModel)]="credentials.password"></ion-input>
         </ion-item>
-        <div>Forgot your login detail? <b><a>Get help signing in</a></b></div>
-        <button style="margin-top: 15px!important; height: 50px" color="dark" (click)="signedIn()" ion-button block outline>Log in</button>
+        <div>Forgot your login detail? <b><a>Get Help</a></b></div>
+        <button class="loginBtnStyle" color="dark" (click)="signedIn()" ion-button block outline>Log in</button>
         <p>OR</p>
-        <button ion-button block style="background-color: #3760a3; height: 50px" (click)="signedIn()">
+        <button ion-button block class="facebookBtnStyle" (click)="signedIn()">
           <ion-icon name="logo-facebook"></ion-icon> Login with facebook
         </button>
       </ion-list>
     </ion-card-content>
-    <div style="color: #0d0d0d!important;">Don't have an account? <b><a style="color: #0d0dff!important;" (click)="goToRegister()">SIGN UP</a></b></div>
+    <div class="blackText">Don't have an account? <b><a class="signUpStyle" (click)="goToRegister()">SIGN UP</a></b></div>
   </ion-card>
 </ion-content>
