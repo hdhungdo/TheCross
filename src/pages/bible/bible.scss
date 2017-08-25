@@ -180,6 +180,23 @@ page-bible {
     color: #8f8f8f;
   }
 
+  div.content {
+    position: relative;
+    margin: auto;
+    max-width: 1200px;
+    width: auto;
+  }
+
+  .dark {
+    background-color: black;
+    color: white
+  }
+
+  .light {
+    background-color: white;
+    color: black;
+  }
+
   .highlight {
     color: #488aff;
   }

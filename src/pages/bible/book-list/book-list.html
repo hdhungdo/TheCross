@@ -12,8 +12,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-    <div class="list-book" *ngFor="let book of books" (click)="change(book.index)">
-      {{ book.name }}
-    </div>
+  <div [class]="backgroundStyle" *ngFor="let book of books" (click)="change(book.index)">
+    {{ book.name }}
+  </div>
 </ion-content>
-

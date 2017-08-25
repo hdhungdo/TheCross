@@ -50,6 +50,12 @@ hd-theme {
     text-align: center;
   }
 
+  .badgeStyle {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
   .circle {
     display: block;
     height: 30px;
@@ -58,5 +64,9 @@ hd-theme {
     border: 2px solid #ffecdd;
     margin: 10px 5px;
     position: relative;
+  }
+
+  .labelStyle {
+    margin-left: 20px;
   }
 }
