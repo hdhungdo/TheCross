@@ -28,7 +28,7 @@
         "@ionic/storage": "2.0.1",
         "@types/firebase": "^2.4.31",
         "@types/request": "^2.0.1",
-        "angularfire2": "^4.0.0-rc.2",
+        "angularfire2": "^4.0.0-rc.1",
         "cordova-android": "^6.2.3",
         "cordova-clipboard": "^1.0.0",
         "cordova-ios": "^4.4.0",

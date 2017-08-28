@@ -229,3 +229,12 @@ page-bible {
     border-radius: 10px!important;
   }
 }
+
+.loadingStyle {
+  box-shadow: none;
+  background-color: rgba(20,20,20,0)!important;
+  > div{
+    background-color: rgba(20,20,20,0)!important;
+    box-shadow: none;
+  }
+}
