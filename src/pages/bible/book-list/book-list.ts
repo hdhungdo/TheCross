@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ViewController} from 'ionic-angular';
+import { IonicPage, NavParams, ViewController } from 'ionic-angular';
+import {StyleProvider} from "../../../providers/style/style";
 
 /**
  * Generated class for the BookListPage page.
@@ -17,10 +18,13 @@ export class BookListPage {
 
   books;
   index;
+  backgroundStyle;
 
-  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams,
+              public style: StyleProvider) {
     this.books = this.navParams.get('books');
     this.index = this.navParams.get('bookIndex');
+    this.backgroundStyle = this.style.bibleDarkThemeToggle ? 'dark':'light';
   }
 
   ionViewDidLoad() {

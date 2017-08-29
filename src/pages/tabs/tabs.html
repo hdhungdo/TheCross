@@ -1,6 +1,7 @@
-<ion-tabs [color]="style.tabsBackground" tabsPlacement="bottom">
+<ion-tabs [color]="style.tabsBackground" tabsPlacement="bottom" #MainTabs>
   <ion-tab (ionSelect)="openHome()" [root]="tab1Root" [tabTitle]="homeTitle" tabIcon="home"></ion-tab>
   <ion-tab (ionSelect)="openBible()" [root]="tab2Root" [tabTitle]="bibleTitle" tabIcon="bookmarks"></ion-tab>
-  <ion-tab (ionSelect)="openTask()" [root]="tab3Root" [tabTitle]="taskTitle" tabIcon="document"></ion-tab>
+  <ion-tab [show]="fireAuth.signedIn" (ionSelect)="openTask()" [root]="tab3Root" [tabTitle]="taskTitle" tabIcon="document"></ion-tab>
+  <ion-tab [show]="fireAuth.signedIn" (ionSelect)="openChat()" [root]="tab4Root" [tabTitle]="chatTitle" tabIcon="chatbubbles"></ion-tab>
   <ion-tab (ionSelect)="openMenu()" [tabTitle]="menuTitle" tabIcon="menu"></ion-tab>
 </ion-tabs>

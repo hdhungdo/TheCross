@@ -5,56 +5,25 @@
       Adjustment
     </ion-title>
     <ion-buttons left>
-      <button ion-button (click)="close()" icon-only style="margin: 0px 10px">
+      <button ion-button (click)="close()" icon-only style="margin: 0 10px">
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
+    <ion-buttons right>
+      <button ion-button (click)="goToSystem()" icon-only style="margin-right: 10px">
+        <ion-icon name="construct"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-  <ion-item>
-    <ion-range min="8" max="32" pin="true" [(ngModel)]="size" (ionChange)="change(size)" color="dark">
+  <ion-item no-lines style="padding-right: 10px!important;">
+    <ion-range min="8" max="32" [(ngModel)]="size" (ionChange)="change(size)" color="dark">
       <ion-icon range-left small color="dark">Text Size</ion-icon>
       <ion-icon range-right color="dark">{{size}}pt</ion-icon>
     </ion-range>
   </ion-item>
-  <ion-scroll scrollX="true" style="width:100vw; height:60px">
-    <ion-row nowrap class="row-dots">
-      <ion-col>
-        <a (click)="changeHeaderBackground('light')" class="dot-light circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('hdGrey')" class="dot-grey circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('primary')" class="dot-primary circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('hdGreen')" class="dot-green circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('danger')" class="dot-red circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('hdBrown')" class="dot-brown circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('hdSkin')" class="dot-hdSkin circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('hdPurple')" class="dot-hdPurple circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('hdPink')" class="dot-hdPink circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('yellow')" class="dot-yellow circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('hdOrange')" class="dot-hdOrange circle"></a>
-      </ion-col>
-      <ion-col>
-        <a (click)="changeHeaderBackground('dark')" class="dot-dark circle"></a>
-      </ion-col>
-    </ion-row>
-  </ion-scroll>
+  <ion-item>
+    <ion-label>Bible Dark Theme</ion-label>
+    <ion-toggle [(ngModel)]="style.bibleDarkThemeToggle" (click)="style.saveStyle()" [color]="style.headerBackground"></ion-toggle>
+  </ion-item>
 </ion-footer>
 

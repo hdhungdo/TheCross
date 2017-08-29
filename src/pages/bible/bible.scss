@@ -180,34 +180,61 @@ page-bible {
     color: #8f8f8f;
   }
 
+  div.content {
+    position: relative;
+    margin: auto;
+    max-width: 1200px;
+    width: auto;
+  }
+
+  .dark {
+    background-color: black;
+    color: white
+  }
+
+  .light {
+    background-color: white;
+    color: black;
+  }
+
   .highlight {
-    color: coral;
+    color: #488aff;
   }
 }
 
 .action-sheets-basic-page {
   .ion-md-share {
-    color: #f53d3d;
+    color: #488aff;
   }
   .ion-md-copy {
+    color: #00756b;
+  }
+  .ion-ios-share {
     color: #488aff;
   }
-  .ion-wp-share {
-    color: #f53d3d;
-  }
-  .ion-wp-copy {
-    color: #488aff;
+  .ion-ios-copy {
+    color: #00756b;
   }
   .action-sheet-cancel ion-icon,
   .action-sheet-destructive ion-icon {
-    color: #757575;
+    color: #f53d3d;
   }
 }
 
 .toastCSS {
   text-align: center;
   > div{
-    background-color:#222222!important;
+    background-color: rgba(20,20,20,0.7)!important;
     width: 50%!important;
+    border-radius: 10px!important;
+  }
+}
+
+.loadingStyle {
+  box-shadow: none;
+  background-color: rgba(20,20,20,0)!important;
+  > div{
+    background-color: rgba(20,20,20,0)!important;
+    box-shadow: none;
   }
 }

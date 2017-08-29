@@ -15,8 +15,11 @@ import { FIREBASE_CONFIG } from "./app.firebase.config";
 import { FirebaseDatabaseProvider } from '../providers/firebase-database/firebase-database';
 import { FirebaseAuthProvider } from "../providers/firebase-auth/firebase-auth";
 import { StyleProvider } from '../providers/style/style';
-import {Clipboard} from "@ionic-native/clipboard";
-import {SocialSharing} from "@ionic-native/social-sharing";
+import { Clipboard } from "@ionic-native/clipboard";
+import { SocialSharing } from "@ionic-native/social-sharing";
+import { DeviceProvider } from '../providers/device/device';
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireDatabaseModule } from "angularfire2/database";
 
 @NgModule({
   declarations: [
@@ -25,9 +28,13 @@ import {SocialSharing} from "@ionic-native/social-sharing";
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      menuType: 'overlay'
+    }),
     IonicStorageModule.forRoot(),
-    AngularFireModule.initializeApp(FIREBASE_CONFIG)
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -43,7 +50,8 @@ import {SocialSharing} from "@ionic-native/social-sharing";
     FirebaseAuthProvider,
     StyleProvider,
     Clipboard,
-    SocialSharing
+    SocialSharing,
+    DeviceProvider
   ]
 })
 export class AppModule {}

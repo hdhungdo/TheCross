@@ -26,27 +26,27 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding [class]="style.bibleDarkThemeToggle ? 'dark':'light'">
 
   <ion-fab bottom right>
-    <button ion-fab [color]="style.headerBackground" mini (click)="next()">
+    <button ion-fab [color]="style.tabsBackground" mini (click)="next()">
       <ion-icon name="arrow-forward" md="ios-arrow-forward"></ion-icon>
     </button>
   </ion-fab>
 
   <ion-fab bottom left>
-    <button ion-fab [color]="style.headerBackground" mini (click)="back()">
+    <button ion-fab [color]="style.tabsBackground" mini (click)="back()">
       <ion-icon name="arrow-back" md="ios-arrow-back"></ion-icon>
     </button>
   </ion-fab>
 
 
-  <div text-wrap *ngFor="let verse of verses" (swipeleft)="next()" (swiperight)="back()">
-    <div [class]="textSize + ' ' + verse.background" (click)="higlight(verse)">
+  <div class="content">
+    <div [class]="verse.background" (click)="higlight(verse)" style="text-indent: 1em;"
+         text-wrap *ngFor="let verse of verses" (swipeleft)="next()" (swiperight)="back()">
       <b><i><sup [class]="verseSize" [id]="verse.key.toString()">{{verse.key}}.</sup></i></b>
-      <span>{{verse.value}}</span>
+      <span [class]="textSize">{{verse.value}}</span>
     </div>
-
   </div>
   <br/>
   <br/>

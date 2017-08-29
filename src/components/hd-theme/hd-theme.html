@@ -1,0 +1,41 @@
+<ion-item>
+  <ion-label>Bible Dark Theme</ion-label>
+  <ion-toggle [(ngModel)]="style.bibleDarkThemeToggle" (click)="style.saveStyle()" [color]="style.headerBackground"></ion-toggle>
+</ion-item>
+
+<ion-label class="labelStyle">Header & Tabs Color</ion-label>
+<ion-item no-lines>
+  <ion-scroll scrollX="true" style="width:100%; height:60px">
+    <ion-row nowrap class="row-dots">
+      <ion-col *ngFor="let item of listColor">
+        <a (click)="changeHeaderAndTabsBackground(item.color)" [class]="item.classStyle"></a>
+        <ion-icon *ngIf="item.color === style.tabsBackground && item.color === style.headerBackground"
+                  name="checkmark" color="hdGreen" class="badgeStyle"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-scroll>
+</ion-item>
+<ion-label class="labelStyle">Header Color</ion-label>
+<ion-item no-lines>
+  <ion-scroll scrollX="true" style="width:100%; height:60px">
+    <ion-row nowrap class="row-dots">
+      <ion-col *ngFor="let item of listColor">
+        <a (click)="changeHeaderBackground(item.color)" [class]="item.classStyle"></a>
+        <ion-icon *ngIf="item.color === style.headerBackground" name="checkmark"
+                  color="hdGreen" class="badgeStyle"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-scroll>
+</ion-item>
+<ion-label class="labelStyle">Tabs Color</ion-label>
+<ion-item no-lines>
+  <ion-scroll scrollX="true" style="width:100%; height:60px">
+    <ion-row nowrap class="row-dots">
+      <ion-col *ngFor="let item of listColor">
+        <a (click)="changeTabsBackground(item.color)" [class]="item.classStyle"></a>
+        <ion-icon *ngIf="item.color === style.tabsBackground" name="checkmark"
+                  color="hdGreen" class="badgeStyle"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-scroll>
+</ion-item>

@@ -66,7 +66,7 @@ export class SearchBiblePage {
 
   filterItems(input) {
     let load = this.loading.create({
-      content: 'Searching...Please wait!'
+      content: 'Searching...'
     });
     if (input && (input.trim() != '')) {
       load.present(load).then(() => {

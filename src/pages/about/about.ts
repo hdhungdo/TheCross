@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController} from 'ionic-angular';
-import {StyleProvider} from "../../providers/style/style";
+import { IonicPage } from 'ionic-angular';
+import { StyleProvider } from "../../providers/style/style";
 
 @IonicPage()
 @Component({
@@ -9,8 +9,7 @@ import {StyleProvider} from "../../providers/style/style";
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController,
-              public style: StyleProvider) {
+  constructor(public style: StyleProvider) {
 
   }
 

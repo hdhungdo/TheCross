@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import {FixTextPage} from "./fix-text";
+import {ComponentsModule} from "../../../components/components.module";
 
 
 
@@ -10,6 +11,7 @@ import {FixTextPage} from "./fix-text";
   ],
   imports: [
     IonicPageModule.forChild(FixTextPage),
+    ComponentsModule,
   ],
 })
 export class FixTextPageModule {}
