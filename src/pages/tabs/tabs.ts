@@ -14,11 +14,13 @@ export class TabsPage {
   tab1Root = 'HomePage';
   tab2Root = 'BiblePage';
   tab3Root = 'TasksPage';
+  tab4Root = 'ChatTabsPage';
 
   homeTitle = 'Home';
   bibleTitle = 'Bible';
   taskTitle = 'Tasks';
   menuTitle = 'Menu';
+  chatTitle = 'Message';
 
   constructor(public menu: MenuController, public fireAuth: FirebaseAuthProvider,
               public style: StyleProvider, public event: Events) {
@@ -42,6 +44,7 @@ export class TabsPage {
     this.bibleTitle = '';
     this.taskTitle = '';
     this.menuTitle = '';
+    this.chatTitle = '';
   }
 
   openBible() {
@@ -49,6 +52,7 @@ export class TabsPage {
     this.bibleTitle = 'Bible';
     this.taskTitle = '';
     this.menuTitle = '';
+    this.chatTitle = '';
   }
 
   openTask() {
@@ -56,6 +60,15 @@ export class TabsPage {
     this.bibleTitle = '';
     this.taskTitle = 'Tasks';
     this.menuTitle = '';
+    this.chatTitle = '';
+  }
+
+  openChat() {
+    this.homeTitle = '';
+    this.bibleTitle = '';
+    this.taskTitle = '';
+    this.menuTitle = '';
+    this.chatTitle = 'Message';
   }
 
   openMenu() {
