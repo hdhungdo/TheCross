@@ -7,7 +7,7 @@
   <div [class]="device.isWeb ? 'webCard':'mobileCard'">
     <div>
       <ion-list no-line inset>
-        <ion-item class="usernameStyle">
+        <ion-item class="emailStyle">
           <ion-label floating>Email</ion-label>
           <ion-input type="email" [(ngModel)]="credentials.email"></ion-input>
         </ion-item>
@@ -16,9 +16,9 @@
           <ion-input type="password" [(ngModel)]="credentials.password"></ion-input>
         </ion-item>
         <div>Forgot your login detail? <b><a>Get Help</a></b></div>
-        <button class="loginBtnStyle" color="dark" (click)="signedIn()" ion-button block outline>Log in</button>
+        <button class="loginBtnStyle" color="dark" (click)="signIn()" ion-button block outline>Log in</button>
         <p>OR</p>
-        <button ion-button block class="facebookBtnStyle" (click)="signedIn()">
+        <button ion-button block class="facebookBtnStyle" (click)="signIn()">
           <ion-icon name="logo-facebook"></ion-icon> Login with facebook
         </button>
       </ion-list>

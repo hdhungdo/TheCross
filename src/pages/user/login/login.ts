@@ -29,15 +29,16 @@ export class LoginPage {
 
   }
 
-  signedIn() {
+  signIn() {
     this.fireAuth.login(this.credentials).then((respond: any) => {
-      if (!respond.code) {
+      if (respond.success) {
         this.fireAuth.signedIn = true;
         this.navCtrl.pop();
       } else {
         alert(respond);
-        console.log(respond);
       }
+    }).catch(err => {
+      console.log(err.message.replace('signInWithEmailAndPassword failed: ', ''));
     });
   }
 
