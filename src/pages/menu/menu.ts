@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Events, IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
+import {Config, Events, IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
 import {FirebaseAuthProvider} from "../../providers/firebase-auth/firebase-auth";
 
 /**
@@ -40,8 +40,9 @@ export class MenuPage{
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public menu: MenuController, public fireAuth: FirebaseAuthProvider,
-              public event: Events) {
-
+              public event: Events, public config: Config) {
+    this.config.set('android', 'menuType', 'reveal');
+    this.config.set('windows', 'menuType', 'reveal');
   }
 
   ionViewDidLoad() {
