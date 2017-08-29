@@ -30,15 +30,18 @@ export class RegisterPage {
   }
 
   signUp() {
-    // let loader = this.loadingCtrl.create();
-    // loader.present();
-    // this.fireAuth.addUser(this.newUser).then((res:any) => {
-    //   loader.dismiss();
-    //   if (res.success) {
-    //     this.navCtrl.pop();
-    //   } else {
-    //     alert(res);
-    //   }
-    // });
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    this.fireAuth.addUser(this.newUser).then((res:any) => {
+      loader.dismiss();
+      if (res.success) {
+        this.navCtrl.pop();
+      } else {
+        alert(res);
+      }
+    }).catch(err => {
+      loader.dismiss();
+      alert(err);
+    });
   }
 }
