@@ -41,8 +41,8 @@ export class MenuPage{
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public menu: MenuController, public fireAuth: FirebaseAuthProvider,
               public event: Events, public config: Config) {
-    this.config.set('android', 'menuType', 'reveal');
-    this.config.set('windows', 'menuType', 'reveal');
+    // this.config.set('android', 'menuType', 'reveal');
+    // this.config.set('windows', 'menuType', 'reveal');
   }
 
   ionViewDidLoad() {
