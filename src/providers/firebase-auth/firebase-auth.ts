@@ -41,8 +41,7 @@ export class FirebaseAuthProvider {
           this.afAuth.auth.currentUser.updateProfile({
             displayName: user.displayName,
             photoURL: user.photoURL
-          })
-            .then(() => {
+          }).then(() => {
               this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
                 uid: this.afAuth.auth.currentUser.uid,
                 email: user.email,
@@ -70,7 +69,7 @@ export class FirebaseAuthProvider {
         .then(() => {
           this.afAuth.auth.currentUser.updateProfile({
             displayName: newUser.displayName,
-            photoURL: ''
+            photoURL: 'http://www.freelanceme.net/Images/default%20profile%20picture.png'
           }).then(() => {
               this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
                 uid: this.afAuth.auth.currentUser.uid,

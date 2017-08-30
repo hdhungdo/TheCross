@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import {IonicPage, LoadingController, NavController, ToastController} from 'ionic-angular';
-import {Usercreds} from "../../../models/usercreds";
-import {StyleProvider} from "../../../providers/style/style";
-import {DeviceProvider} from "../../../providers/device/device";
-import {FirebaseAuthProvider} from "../../../providers/firebase-auth/firebase-auth";
+import { IonicPage, LoadingController, NavController, ToastController } from 'ionic-angular';
+import { Usercreds } from "../../../models/usercreds";
+import { StyleProvider } from "../../../providers/style/style";
+import { DeviceProvider } from "../../../providers/device/device";
+import { FirebaseAuthProvider } from "../../../providers/firebase-auth/firebase-auth";
 
 /**
  * Generated class for the RegisterPage page.
