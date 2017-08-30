@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, LoadingController, NavController} from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, ToastController} from 'ionic-angular';
 import {Usercreds} from "../../../models/usercreds";
 import {StyleProvider} from "../../../providers/style/style";
 import {DeviceProvider} from "../../../providers/device/device";
@@ -22,7 +22,7 @@ export class RegisterPage {
 
   constructor(public navCtrl: NavController, public style: StyleProvider,
               public device: DeviceProvider, public fireAuth: FirebaseAuthProvider,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController, public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -35,13 +35,24 @@ export class RegisterPage {
     this.fireAuth.addUser(this.newUser).then((res:any) => {
       loader.dismiss();
       if (res.success) {
+        this.showToast('middle', `Congratulation! Your account was created`)
         this.navCtrl.pop();
       } else {
-        alert(res);
+        this.showToast('middle', res);
       }
     }).catch(err => {
       loader.dismiss();
-      alert(err);
+      this.showToast('middle', err.message.replace('createUserWithEmailAndPassword failed: ', ''));
     });
+  }
+
+  showToast(position: string, message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 2000,
+      position: position,
+      cssClass: 'toastStyle'
+    });
+    toast.present(toast);
   }
 }

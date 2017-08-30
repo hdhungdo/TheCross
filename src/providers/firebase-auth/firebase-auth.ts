@@ -14,48 +14,83 @@ export class FirebaseAuthProvider {
 
   }
 
+  logOut() {
+    this.afAuth.auth.signOut();
+    this.signedIn = false;
+  }
+
   login(credentials: Usercreds) {
-    let promise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
         .then(() => {
           resolve({success: true});
-        })
-        .catch((err) => {
+          this.signedIn = true;
+      }).catch((err) => {
           reject(err);
-        });
+      });
     });
-    return promise;
+  }
+
+  loginWithFacebook() {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+        .then((res) => {
+          resolve(res);
+          this.signedIn = true;
+          let user = res.user;
+          this.afAuth.auth.currentUser.updateProfile({
+            displayName: user.displayName,
+            photoURL: user.photoURL
+          })
+            .then(() => {
+              this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
+                uid: this.afAuth.auth.currentUser.uid,
+                email: user.email,
+                displayName: user.displayName,
+                photoURL: user.photoURL
+              }).then(() => {
+                resolve({success: true});
+              }).catch(err => {
+                  reject(err);
+                });
+            })
+            .catch(err => {
+              reject(err);
+            });
+        })
+        .catch(err => {
+        reject(err);
+      });
+    });
   }
 
   addUser(newUser: Usercreds) {
-    let promise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this.afAuth.auth.createUserWithEmailAndPassword(newUser.email, newUser.password)
         .then(() => {
           this.afAuth.auth.currentUser.updateProfile({
             displayName: newUser.displayName,
             photoURL: ''
-          })
-            .then(() => {
+          }).then(() => {
               this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
                 uid: this.afAuth.auth.currentUser.uid,
+                email: newUser.email,
                 displayName: newUser.displayName,
                 photoURL: 'http://www.freelanceme.net/Images/default%20profile%20picture.png'
-              })
-                .then(() => {
+              }).then(() => {
                   resolve({success: true});
                 })
                 .catch(err => {
                   reject(err);
-                })
+                });
             })
             .catch(err => {
               reject(err);
-            })
+            });
         })
         .catch(err => {
           reject(err);
-        })
+        });
     });
-    return promise;
   }
 }

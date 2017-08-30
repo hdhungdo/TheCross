@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, ToastController} from 'ionic-angular';
+import { IonicPage, LoadingController, NavController, ToastController } from 'ionic-angular';
 import { FirebaseAuthProvider } from "../../../providers/firebase-auth/firebase-auth";
 import { StyleProvider } from "../../../providers/style/style";
 import { Usercreds } from "../../../models/usercreds";
@@ -23,7 +23,7 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public device: DeviceProvider,
               public fireAuth: FirebaseAuthProvider, public style: StyleProvider,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -33,14 +33,26 @@ export class LoginPage {
   signIn() {
     this.fireAuth.login(this.credentials).then((respond: any) => {
       if (respond.success) {
-        this.showToast('middle', 'Login Successfully!')
-        this.fireAuth.signedIn = true;
+        this.showToast('middle', 'Login Successfully!');
         this.navCtrl.pop();
       } else {
         alert(respond);
       }
     }).catch(err => {
       this.showToast('middle', err.message.replace('signInWithEmailAndPassword failed: ', ''));
+    });
+  }
+
+  signInWithFacebook() {
+    let loader = this.loadingCtrl.create();
+    loader.present();
+    this.fireAuth.loginWithFacebook().then((res:any) => {
+      loader.dismiss();
+      this.showToast('middle', 'Login Successfully!');
+      this.navCtrl.pop();
+    }).catch(err => {
+      loader.dismiss();
+      this.showToast('middle', err);
     });
   }
 
@@ -55,7 +67,6 @@ export class LoginPage {
       position: position,
       cssClass: 'toastStyle'
     });
-
     toast.present(toast);
   }
 
