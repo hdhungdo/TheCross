@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ChatTabsPage } from './chat-tabs';
+import { SuperTabsModule } from "ionic2-super-tabs";
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { ChatTabsPage } from './chat-tabs';
   ],
   imports: [
     IonicPageModule.forChild(ChatTabsPage),
+    SuperTabsModule,
   ]
 })
 export class ChatTabsPageModule {}

@@ -21,6 +21,7 @@ import { DeviceProvider } from '../providers/device/device';
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { Facebook } from "@ionic-native/facebook";
+import { SuperTabsModule } from "ionic2-super-tabs";
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { Facebook } from "@ionic-native/facebook";
   imports: [
     BrowserModule,
     HttpModule,
+    SuperTabsModule.forRoot(),
     IonicModule.forRoot(MyApp, {
       menuType: 'overlay'
     }),

@@ -1,18 +1,26 @@
 page-book-list {
   .light {
-    display: block;
-    padding: 20px;
-    font-size: 13pt;
-    font-family: 'AvenirNextLTPro-Regular', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-    border-bottom: solid 1px #8f8f8f;
+    background-color: white;
+    .divStyle {
+      display: block;
+      padding: 20px;
+      font-size: 13pt;
+      font-family: 'AvenirNextLTPro-Regular', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+      border-bottom: solid 1px #8f8f8f;
+      background-color: white;
+      color: black;
+    }
   }
   .dark {
-    display: block;
-    padding: 20px;
-    font-size: 13pt;
-    font-family: 'AvenirNextLTPro-Regular', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-    border-bottom: solid 1px #fff9cc;
     background-color: black;
-    color: white;
+    .divStyle {
+      display: block;
+      padding: 20px;
+      font-size: 13pt;
+      font-family: 'AvenirNextLTPro-Regular', 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+      border-bottom: solid 1px #fff9cc;
+      background-color: black;
+      color: white;
+    }
   }
 }

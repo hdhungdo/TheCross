@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams, ViewController } from 'ionic-angular';
 import {StyleProvider} from "../../../providers/style/style";
+import {TranslateServiceProvider} from "../../../providers/translate-service/translate-service";
 
 /**
  * Generated class for the BookListPage page.
@@ -21,7 +22,7 @@ export class BookListPage {
   backgroundStyle;
 
   constructor(public viewCtrl: ViewController, public navParams: NavParams,
-              public style: StyleProvider) {
+              public style: StyleProvider, public translate: TranslateServiceProvider) {
     this.books = this.navParams.get('books');
     this.index = this.navParams.get('bookIndex');
     this.backgroundStyle = this.style.bibleDarkThemeToggle ? 'dark':'light';
@@ -46,9 +47,10 @@ export class BookListPage {
 
     if (val && val.trim() != '') {
       this.books = this.books.filter((item) => {
-        return (item.name.replace(/[&\/\\#-=,+()$~%.'":*?<>{}]/gi,' ')
-          .replace(/ {2,}/g,' ').toLowerCase().indexOf(val
-            .replace(/ {2,}/g,' ').toLowerCase()) > -1);
+        return (this.translate.removeDiacritics(item.name.replace(/[&\/\\#-=,+()$~%.'":*?<>{}]/gi,' ')
+          .replace(/ {2,}/g,' ').toLowerCase()).indexOf(
+            this.translate.removeDiacritics(val.replace(/[&\/\\#-=,+()$~%.'":*?<>{}]/gi,' ')
+            .replace(/ {2,}/g,' ').toLowerCase())) > -1);
       })
     }
   }

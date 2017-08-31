@@ -8,7 +8,7 @@ import { Usercreds } from "../../models/usercreds";
 
 @Injectable()
 export class FirebaseAuthProvider {
-  fireDatabase = firebase.database().ref('/chat/chatUsers');
+  fireDatabase = firebase.database().ref('/users');
 
   signedIn: boolean = false;
 
