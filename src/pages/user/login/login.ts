@@ -52,7 +52,6 @@ export class LoginPage {
       this.navCtrl.pop();
     }).catch(err => {
       loader.dismiss();
-      this.showToast('middle', err);
     });
   }
 

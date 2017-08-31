@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar [color]="style.headerBackground">
 
-    <ion-buttons right>
+    <ion-buttons right col-4>
       <button ion-button icon-only (click)="openFixTextSize($event)" class="topIcon">
         <ion-icon name="options"></ion-icon>
       </button>
@@ -10,7 +10,7 @@
       </button>
     </ion-buttons>
 
-    <ion-buttons left>
+    <ion-buttons left col-8>
       <button nowrap (click)="openBookList($event)" class="uppercase" ion-button icon-right clear>
         {{ bookName }}
         <ion-icon ios="md-arrow-dropdown" name="arrow-dropdown"></ion-icon>

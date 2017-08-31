@@ -7,7 +7,7 @@
 <ion-item no-lines>
   <ion-scroll scrollX="true" style="width:100%; height:60px">
     <ion-row nowrap class="row-dots">
-      <ion-col *ngFor="let item of listColor">
+      <ion-col *ngFor="let item of listColor" col-2>
         <a (click)="changeHeaderAndTabsBackground(item.color)" [class]="item.classStyle"></a>
         <ion-icon *ngIf="item.color === style.tabsBackground && item.color === style.headerBackground"
                   name="checkmark" color="hdGreen" class="badgeStyle"></ion-icon>
@@ -19,7 +19,7 @@
 <ion-item no-lines>
   <ion-scroll scrollX="true" style="width:100%; height:60px">
     <ion-row nowrap class="row-dots">
-      <ion-col *ngFor="let item of listColor">
+      <ion-col *ngFor="let item of listColor" col-2>
         <a (click)="changeHeaderBackground(item.color)" [class]="item.classStyle"></a>
         <ion-icon *ngIf="item.color === style.headerBackground" name="checkmark"
                   color="hdGreen" class="badgeStyle"></ion-icon>
@@ -31,7 +31,7 @@
 <ion-item no-lines>
   <ion-scroll scrollX="true" style="width:100%; height:60px">
     <ion-row nowrap class="row-dots">
-      <ion-col *ngFor="let item of listColor">
+      <ion-col *ngFor="let item of listColor" col-2>
         <a (click)="changeTabsBackground(item.color)" [class]="item.classStyle"></a>
         <ion-icon *ngIf="item.color === style.tabsBackground" name="checkmark"
                   color="hdGreen" class="badgeStyle"></ion-icon>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
+import {StyleProvider} from "../../../../providers/style/style";
 
 /**
  * Generated class for the ChatTabsPage tabs.
@@ -15,10 +16,10 @@ import { IonicPage, NavController } from 'ionic-angular';
 })
 export class ChatTabsPage {
 
-  chatsRoot = 'ChatsPage'
-  groupsRoot = 'GroupsPage'
+  chatsRoot = 'ChatsPage';
+  groupsRoot = 'GroupsPage';
 
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public style: StyleProvider) {}
 
 }
