@@ -55,7 +55,7 @@
         "@ionic/app-scripts": "^2.1.4",
         "ionic": "3.9.2",
         "tslint": "^5.7.0",
-        "typescript": "^2.3.4"
+        "typescript": "^2.4.0"
     },
     "description": "An Ionic project",
     "cordova": {
