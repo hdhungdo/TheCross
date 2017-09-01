@@ -15,7 +15,7 @@
           <ion-label floating>Password</ion-label>
           <ion-input type="password" [(ngModel)]="credentials.password"></ion-input>
         </ion-item>
-        <div>Forgot your login detail? <b><a>Get Help</a></b></div>
+        <div>Forgot your login detail? <b><a [navPush]="'PasswordResetPage'">Get Help</a></b></div>
         <button class="loginBtnStyle" color="dark" (click)="signIn()" ion-button block outline>Log in</button>
         <p>OR</p>
         <button ion-button block class="facebookBtnStyle" (click)="signInWithFacebook()">
@@ -23,6 +23,6 @@
         </button>
       </ion-list>
     </div>
-    <div class="blackText">Don't have an account? <b><a class="signUpStyle" (click)="goToRegister()">SIGN UP</a></b></div>
+    <div class="blackText">Don't have an account? <b><a class="signUpStyle" [navPush]="'RegisterPage'">SIGN UP</a></b></div>
   </div>
 </ion-content>

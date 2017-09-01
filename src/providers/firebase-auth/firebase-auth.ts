@@ -5,6 +5,7 @@ import { Platform, ToastController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import 'rxjs/add/operator/map';
 import { Usercreds } from "../../models/usercreds";
+import {reject} from "q";
 
 @Injectable()
 export class FirebaseAuthProvider {
@@ -49,13 +50,14 @@ export class FirebaseAuthProvider {
         const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
         firebase.auth().signInWithCredential(facebookCredential)
           .then((res) => {
-            resolve(res);
+            resolve({success: true});
             this.signedIn = true;
             let user = res;
             this.afAuth.auth.currentUser.updateProfile({
               displayName: user.displayName,
               photoURL: user.photoURL
             }).then(() => {
+              resolve({success: true});
               this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
                 uid: this.afAuth.auth.currentUser.uid,
                 email: user.email,
@@ -84,13 +86,14 @@ export class FirebaseAuthProvider {
     return new Promise((resolve, reject) => {
       this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
         .then((res) => {
-          resolve(res);
+          resolve({success: true});
           this.signedIn = true;
           let user = res.user;
           this.afAuth.auth.currentUser.updateProfile({
             displayName: user.displayName,
             photoURL: user.photoURL
           }).then(() => {
+              resolve({success: true});
               this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
                 uid: this.afAuth.auth.currentUser.uid,
                 email: user.email,
@@ -139,6 +142,16 @@ export class FirebaseAuthProvider {
         .catch(err => {
           reject(err);
         });
+    });
+  }
+
+  sendPasswordResetEmail(email:string) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().sendPasswordResetEmail(email).then(() => {
+        resolve({success: true});
+      }).catch(err => {
+        reject(err);
+      });
     });
   }
 
