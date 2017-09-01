@@ -6,7 +6,7 @@ After clone the project, try to run:
 ```bash
 ionic cordova prepare
 ```
-Then keep follow for adding dependencies, plugin and platform folder 
+Then keep follow for adding `dependencies (node_modules), plugin and platform folder`
 
 
 ### Follow instruction bellow if getting any error.
@@ -20,7 +20,7 @@ Class 'Tabs' incorrectly implements interface 'NavigationContainer'. Types of pr
             => Promi...'. Types of parameters 'done' and 'opts' are incompatible. Type 'NavOptions' is not assignable to 
             type '() => void'. Type 'NavOptions' provides no match for the signature '(): void'. 
 ```
-Fix this by taking the params argument out of the popTo() declaration on line 466 of ionic-angular/navigation/nav-controller.d.ts. 
+Fix this by taking the params argument out of the popTo() declaration on line 466 of `ionic-angular/navigation/nav-controller.d.ts.` 
 ```bash
 abstract popTo(page: Page | string | ViewController, params?: any, opts?: NavOptions, done?: Function): Promise<any>;
 To
@@ -39,7 +39,7 @@ Fix this by run:
 npm install typescript@2.4.0
 ```
 ---
-Error when build --prod:
+Error when `build --prod`:
 ```bash
 ./src/app/app.module.ngfactory.js
 Module not found: Error: Can't resolve '../../angularfire2/auth' in '/Users/hungdo/Ionic3/TheCross/src/app'
