@@ -13,6 +13,38 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <div class="profile-img">
+    <img src="{{user.photoURL}}">
+  </div>
 
+  <ion-item *ngIf="!editDisplayName" class="inputItem" no-lines>
+    <ion-label text-center>{{user.displayName}}</ion-label>
+  </ion-item>
+  <ion-item *ngIf="showEmail" class="inputItem" no-lines>
+    <ion-label text-center>{{user.email}}</ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="editDisplayName" class="inputItem" no-lines>
+    <ion-input class="child" type="text" [(ngModel)]="info.displayName" placeholder="Edit Nick Name" text-center></ion-input>
+  </ion-item>
+
+  <ion-item *ngIf="editPhotoUrl" class="inputItem" no-lines>
+    <ion-input class="child" type="text" [(ngModel)]="info.photoURL" placeholder="Edit PhotoUrl" text-center></ion-input>
+  </ion-item>
+
+
+  <div *ngIf="updateBtn">
+    <button ion-button round outline (click)="editProfile()">Edit</button>
+  </div>
+  <div *ngIf="!updateBtn">
+    <ion-buttons>
+      <button ion-button round outline left (click)="cancelClick()">
+        Cancel
+      </button>
+      <button ion-button round outline right (click)="updateProfile()">
+        Update
+      </button>
+    </ion-buttons>
+  </div>
 </ion-content>

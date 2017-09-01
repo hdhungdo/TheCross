@@ -5,7 +5,6 @@ import { Platform, ToastController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import 'rxjs/add/operator/map';
 import { Usercreds } from "../../models/usercreds";
-import {reject} from "q";
 
 @Injectable()
 export class FirebaseAuthProvider {
@@ -121,13 +120,13 @@ export class FirebaseAuthProvider {
         .then(() => {
           this.afAuth.auth.currentUser.updateProfile({
             displayName: newUser.displayName,
-            photoURL: 'http://www.freelanceme.net/Images/default%20profile%20picture.png'
+            photoURL: 'https://rlv.zcache.com.au/penguin_face_birthday_party_card-r8338e73e5dae4a2abad360fee79f2f49_zk918_324.jpg?rlvnet=1'
           }).then(() => {
               this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
                 uid: this.afAuth.auth.currentUser.uid,
                 email: newUser.email,
                 displayName: newUser.displayName,
-                photoURL: 'http://www.freelanceme.net/Images/default%20profile%20picture.png'
+                photoURL: 'https://rlv.zcache.com.au/penguin_face_birthday_party_card-r8338e73e5dae4a2abad360fee79f2f49_zk918_324.jpg?rlvnet=1'
               }).then(() => {
                   resolve({success: true});
                 })
@@ -142,6 +141,28 @@ export class FirebaseAuthProvider {
         .catch(err => {
           reject(err);
         });
+    });
+  }
+
+  updateUserInfo(info) {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.currentUser.updateProfile({
+        displayName: info.displayName,
+        photoURL: info.photoURL
+      }).then(() => {
+        firebase.database().ref('/users/' + firebase.auth().currentUser.uid).update({
+          displayName: info.displayName,
+          photoURL: info.photoURL,
+          uid: firebase.auth().currentUser.uid,
+          email: firebase.auth().currentUser.email
+        }).then(() => {
+          resolve({ success: true });
+        }).catch((err) => {
+          reject(err);
+        });
+      }).catch((err) => {
+        reject(err);
+      });
     });
   }
 
