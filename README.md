@@ -8,7 +8,7 @@ ionic cordova prepare
 ```
 Then keep follow for adding dependencies, plugin and platform folder 
 
-Follow instruction bellow iff getting any error.
+Follow instruction bellow if getting any error.
 
 Error:
 ```bash
