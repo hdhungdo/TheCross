@@ -18,6 +18,10 @@ import { StyleProvider } from '../providers/style/style';
 import { Clipboard } from "@ionic-native/clipboard";
 import { SocialSharing } from "@ionic-native/social-sharing";
 import { DeviceProvider } from '../providers/device/device';
+import { AngularFireAuthModule } from "angularfire2/auth";
+import { AngularFireDatabaseModule } from "angularfire2/database";
+import { Facebook } from "@ionic-native/facebook";
+import { SuperTabsModule } from "ionic2-super-tabs";
 
 @NgModule({
   declarations: [
@@ -26,9 +30,14 @@ import { DeviceProvider } from '../providers/device/device';
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    SuperTabsModule.forRoot(),
+    IonicModule.forRoot(MyApp, {
+      menuType: 'overlay'
+    }),
     IonicStorageModule.forRoot(),
-    AngularFireModule.initializeApp(FIREBASE_CONFIG)
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -45,7 +54,8 @@ import { DeviceProvider } from '../providers/device/device';
     StyleProvider,
     Clipboard,
     SocialSharing,
-    DeviceProvider
+    DeviceProvider,
+    Facebook
   ]
 })
 export class AppModule {}

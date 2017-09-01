@@ -16,3 +16,16 @@
   width: 70%;
   text-align: center;
 }
+
+.toastStyle {
+  text-align: center;
+  > div{
+    background-color: rgba(20,20,20,0.7)!important;
+    width: 70%!important;
+    border-radius: 10px!important;
+  }
+}
+
+.scroll-content {
+  overflow-y: auto;
+}

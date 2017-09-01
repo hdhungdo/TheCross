@@ -11,8 +11,8 @@
     <ion-searchbar placeholder="Book's Name" (ionInput)="filterItems($event)"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <div [class]="backgroundStyle" *ngFor="let book of books" (click)="change(book.index)">
+<ion-content [class]="backgroundStyle">
+  <div class="divStyle" *ngFor="let book of books" (click)="change(book.index)">
     {{ book.name }}
   </div>
 </ion-content>

@@ -1,6 +1,6 @@
-import {Component} from '@angular/core';
-import {IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
-import {FirebaseAuthProvider} from "../../providers/firebase-auth/firebase-auth";
+import { Component } from '@angular/core';
+import { Events, IonicPage, MenuController, NavController, NavParams} from 'ionic-angular';
+import { FirebaseAuthProvider } from "../../providers/firebase-auth/firebase-auth";
 
 /**
  * Generated class for the MenuPage page.
@@ -39,8 +39,10 @@ export class MenuPage{
     }];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public menu: MenuController, public fireAuth: FirebaseAuthProvider) {
-
+              public menu: MenuController, public fireAuth: FirebaseAuthProvider,
+              public event: Events) {
+    // this.config.set('android', 'menuType', 'reveal');
+    // this.config.set('windows', 'menuType', 'reveal');
   }
 
   ionViewDidLoad() {
@@ -58,7 +60,8 @@ export class MenuPage{
 
   signOut() {
     this.menu.close('menu');
-    this.fireAuth.signedIn = false;
+    this.fireAuth.logOut();
+    this.event.publish('signedOut', true);
   }
 
 }

@@ -28,7 +28,7 @@ export class ChapterPage {
   }
 
   ionViewDidLoad() {
-    this.chapters = this.navParams.get('chapters')
+    this.chapters = this.navParams.get('chapters');
     this.setupBlock();
   }
 

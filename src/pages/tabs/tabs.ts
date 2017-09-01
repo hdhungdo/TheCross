@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {IonicPage, MenuController} from "ionic-angular";
+import {Component, ViewChild} from '@angular/core';
+import {Events, IonicPage, MenuController, Tabs} from "ionic-angular";
 import {StyleProvider} from "../../providers/style/style";
 import {FirebaseAuthProvider} from "../../providers/firebase-auth/firebase-auth";
 
@@ -9,23 +9,35 @@ import {FirebaseAuthProvider} from "../../providers/firebase-auth/firebase-auth"
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
+  @ViewChild('MainTabs') tabRef: Tabs;
 
   tab1Root = 'HomePage';
   tab2Root = 'BiblePage';
   tab3Root = 'TasksPage';
+  tab4Root = 'ChatTabsPage';
 
   homeTitle = 'Home';
   bibleTitle = 'Bible';
   taskTitle = 'Tasks';
   menuTitle = 'Menu';
+  chatTitle = 'Message';
 
   constructor(public menu: MenuController, public fireAuth: FirebaseAuthProvider,
-              public style: StyleProvider) {
+              public style: StyleProvider, public event: Events) {
 
   }
 
   ionViewDidLoad() {
-
+    this.event.subscribe('signedOut',(data) => {
+      if (data) {
+        let currentTab = this.tabRef.getSelected();
+        let taskTab = this.tabRef.getByIndex(2);
+        let chatTab = this.tabRef.getByIndex(3);
+        if (currentTab === taskTab || currentTab === chatTab) {
+          this.tabRef.select(0);
+        }
+      }
+    });
   }
 
   openHome() {
@@ -33,6 +45,7 @@ export class TabsPage {
     this.bibleTitle = '';
     this.taskTitle = '';
     this.menuTitle = '';
+    this.chatTitle = '';
   }
 
   openBible() {
@@ -40,6 +53,7 @@ export class TabsPage {
     this.bibleTitle = 'Bible';
     this.taskTitle = '';
     this.menuTitle = '';
+    this.chatTitle = '';
   }
 
   openTask() {
@@ -47,6 +61,15 @@ export class TabsPage {
     this.bibleTitle = '';
     this.taskTitle = 'Tasks';
     this.menuTitle = '';
+    this.chatTitle = '';
+  }
+
+  openChat() {
+    this.homeTitle = '';
+    this.bibleTitle = '';
+    this.taskTitle = '';
+    this.menuTitle = '';
+    this.chatTitle = 'Message';
   }
 
   openMenu() {

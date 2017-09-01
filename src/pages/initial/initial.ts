@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { IonicPage } from 'ionic-angular';
+import {IonicPage, NavController} from 'ionic-angular';
 import { BibleServiceProvider } from "../../providers/bible-service/bible-service";
 
 /**
@@ -12,19 +12,25 @@ import { BibleServiceProvider } from "../../providers/bible-service/bible-servic
 
 @IonicPage()
 @Component({
-  templateUrl: 'initial.html',
+  selector: 'page-initial',
+  templateUrl: 'initial.html'
 })
 export class InitialPage {
+  splash:boolean = true;
+  rootPage:string = 'BiblePage';
 
-  rootPage:string = 'MenuPage';
-
-  constructor(private bibleService: BibleServiceProvider, public storage: Storage) {
+  constructor(private bibleService: BibleServiceProvider, public storage: Storage,
+              public navCtrl: NavController) {
   }
 
   ionViewDidLoad() {
     this.getBible();
     this.getCache();
     this.getFontSize();
+    setTimeout(() => {
+      this.splash = false;
+      this.navCtrl.setRoot(this.rootPage);
+    }, 2000);
   }
 
   getBible() {

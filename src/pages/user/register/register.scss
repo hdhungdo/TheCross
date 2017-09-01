@@ -1,3 +1,52 @@
 page-register {
 
+  .scroll-content {
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  button {
+    border-radius: 25px!important;
+  }
+
+  .icon {
+    padding-right: 10px;
+  }
+
+  .webCard {
+    position: relative;
+    margin: auto;
+    max-width: 500px;
+    width: auto;
+  }
+
+  .mobileCard {
+    position: relative;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: auto;
+    align-self: center;
+  }
+  .displayName {
+    border-bottom: 1px solid gainsboro;
+    margin-top: 25px
+  }
+  .emailStyle {
+    border-bottom: 1px solid gainsboro;
+  }
+  .passwordStyle {
+    margin-bottom: 25px!important;
+    border-bottom: 1px solid gainsboro
+  }
+  .signUpBtnStyle {
+    margin-top: 15px!important;
+    background-color: #00756b;
+    height: 50px
+  }
+  .blackText {
+    color: #0d0d0d;
+  }
+
+
 }

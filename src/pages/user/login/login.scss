@@ -2,7 +2,6 @@ page-login {
 
   .scroll-content {
     align-content: center;
-    display: flex;
     flex-direction: column;
     text-align: center;
   }
@@ -15,8 +14,41 @@ page-login {
     padding-right: 10px;
   }
 
-  ion-card.card {
-    box-shadow: none;
+  .webCard {
     position: relative;
+    margin: auto;
+    max-width: 500px;
+    width: auto;
+  }
+
+  .mobileCard {
+    position: relative;
+    padding-right: 10px;
+    padding-left: 10px;
+    width: auto;
+    align-self: center;
+  }
+
+  .emailStyle {
+    border-bottom: 1px solid gainsboro;
+    margin-top: 25px
+  }
+  .passwordStyle {
+    margin-bottom: 25px!important;
+    border-bottom: 1px solid gainsboro
+  }
+  .loginBtnStyle {
+    margin-top: 15px!important;
+    height: 50px
+  }
+  .facebookBtnStyle {
+    background-color: #3760a3;
+    height: 50px
+  }
+  .blackText {
+    color: #0d0d0d;
+  }
+  .signUpStyle {
+    color: #0d0dff!important;
   }
 }

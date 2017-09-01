@@ -84,7 +84,7 @@ export class SearchBiblePage {
         }
       });
     } else {
-      this.showToast('top', 'Please input text you want to search')
+      this.showToast('top', 'Please input text you want to search');
       this.filter = [];
     }
 
