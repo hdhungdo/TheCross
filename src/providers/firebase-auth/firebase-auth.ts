@@ -1,34 +1,153 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+import { Platform, ToastController } from 'ionic-angular';
+import { Facebook } from '@ionic-native/facebook';
 import 'rxjs/add/operator/map';
-import {Usercreds} from "../../models/usercreds";
+import { Usercreds } from "../../models/usercreds";
 
-/*
-  Generated class for the FirebaseAuthProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular DI.
-*/
 @Injectable()
 export class FirebaseAuthProvider {
+  fireDatabase = firebase.database().ref('/users');
 
   signedIn: boolean = false;
 
-  constructor(public afAuth: AngularFireAuth) {
+  constructor(public afAuth: AngularFireAuth, public platform: Platform,
+              public facebook: Facebook, public toastCtrl: ToastController) {
 
+  }
+
+  logOut() {
+    this.afAuth.auth.signOut();
+    this.signedIn = false;
   }
 
   login(credentials: Usercreds) {
-    let promise = new Promise((resole, reject) => {
+    return new Promise((resolve, reject) => {
       this.afAuth.auth.signInWithEmailAndPassword(credentials.email, credentials.password)
         .then(() => {
-          resole(true);
+          resolve({success: true});
+          this.signedIn = true;
+      }).catch((err) => {
+          reject(err);
+      });
+    });
+  }
+
+  loginWithFacebook() {
+    if (this.platform.is('cordova')) {
+      return this.loginWithFacebookMobile();
+    }
+    else {
+      return this.loginWithFacebookWeb();
+    }
+  }
+
+  loginWithFacebookMobile() {
+    return new Promise((resolve, reject) => {
+      this.facebook.login(['email', 'public_profile']).then(res => {
+        const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
+        firebase.auth().signInWithCredential(facebookCredential)
+          .then((res) => {
+            resolve(res);
+            this.signedIn = true;
+            let user = res;
+            this.afAuth.auth.currentUser.updateProfile({
+              displayName: user.displayName,
+              photoURL: user.photoURL
+            }).then(() => {
+              this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
+                uid: this.afAuth.auth.currentUser.uid,
+                email: user.email,
+                displayName: user.displayName,
+                photoURL: user.photoURL
+              }).then(() => {
+                resolve({success: true});
+              }).catch(err => {
+                reject(err);
+              });
+            })
+              .catch(err => {
+                reject(err);
+              });
+          })
+          .catch(err => {
+            reject(err);
+          });
+      }).catch(err => {
+        reject(err);
+      })
+    });
+  }
+
+  loginWithFacebookWeb() {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+        .then((res) => {
+          resolve(res);
+          this.signedIn = true;
+          let user = res.user;
+          this.afAuth.auth.currentUser.updateProfile({
+            displayName: user.displayName,
+            photoURL: user.photoURL
+          }).then(() => {
+              this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
+                uid: this.afAuth.auth.currentUser.uid,
+                email: user.email,
+                displayName: user.displayName,
+                photoURL: user.photoURL
+              }).then(() => {
+                resolve({success: true});
+              }).catch(err => {
+                  reject(err);
+                });
+            })
+            .catch(err => {
+              reject(err);
+            });
         })
-        .catch((err) => {
+        .catch(err => {
+        reject(err);
+      });
+    });
+  }
+
+  addUser(newUser: Usercreds) {
+    return new Promise((resolve, reject) => {
+      this.afAuth.auth.createUserWithEmailAndPassword(newUser.email, newUser.password)
+        .then(() => {
+          this.afAuth.auth.currentUser.updateProfile({
+            displayName: newUser.displayName,
+            photoURL: 'http://www.freelanceme.net/Images/default%20profile%20picture.png'
+          }).then(() => {
+              this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
+                uid: this.afAuth.auth.currentUser.uid,
+                email: newUser.email,
+                displayName: newUser.displayName,
+                photoURL: 'http://www.freelanceme.net/Images/default%20profile%20picture.png'
+              }).then(() => {
+                  resolve({success: true});
+                })
+                .catch(err => {
+                  reject(err);
+                });
+            })
+            .catch(err => {
+              reject(err);
+            });
+        })
+        .catch(err => {
           reject(err);
         });
     });
-    return promise;
   }
 
+  showToast(position: string, message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 5000,
+      position: position
+    });
+    toast.present(toast);
+  }
 }

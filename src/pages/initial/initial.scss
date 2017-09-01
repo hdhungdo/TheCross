@@ -10,7 +10,7 @@
 }
 
 .flb {
-  background-color: #fff9cc;
+  background-color: white;
   height:100%;
   width:100%;
   //animation: pulse 1s linear forwards;
@@ -33,7 +33,7 @@
   width: 20%;
   height: auto;
   animation: animation 2000ms linear infinite both;
-  animation-delay: 1s;
+  animation-delay: 0.5s;
 }
 
 @keyframes pulse {

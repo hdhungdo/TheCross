@@ -41,13 +41,6 @@ export class BiblePage {
   }
 
   ionViewDidLoad() {
-    // let load = this.loading.create({
-    //   cssClass: 'loadingStyle'
-    // });
-    // load.present(load).then(() => {
-    //   this.getBible();
-    //   load.dismiss(load);
-    // });
     this.getBible();
     this.events.subscribe('textSize', (data) => {
       if (data !== null) {

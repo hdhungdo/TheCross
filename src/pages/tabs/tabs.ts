@@ -32,7 +32,8 @@ export class TabsPage {
       if (data) {
         let currentTab = this.tabRef.getSelected();
         let taskTab = this.tabRef.getByIndex(2);
-        if (currentTab === taskTab) {
+        let chatTab = this.tabRef.getByIndex(3);
+        if (currentTab === taskTab || currentTab === chatTab) {
           this.tabRef.select(0);
         }
       }

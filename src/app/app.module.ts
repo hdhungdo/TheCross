@@ -20,6 +20,8 @@ import { SocialSharing } from "@ionic-native/social-sharing";
 import { DeviceProvider } from '../providers/device/device';
 import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { Facebook } from "@ionic-native/facebook";
+import { SuperTabsModule } from "ionic2-super-tabs";
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
   imports: [
     BrowserModule,
     HttpModule,
+    SuperTabsModule.forRoot(),
     IonicModule.forRoot(MyApp, {
       menuType: 'overlay'
     }),
@@ -51,7 +54,8 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
     StyleProvider,
     Clipboard,
     SocialSharing,
-    DeviceProvider
+    DeviceProvider,
+    Facebook
   ]
 })
 export class AppModule {}

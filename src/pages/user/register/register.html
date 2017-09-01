@@ -1,18 +1,26 @@
-<!--
-  Generated template for the RegisterPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>register</ion-title>
+  <ion-navbar [color]="style.headerBackground">
+    <ion-title>Register</ion-title>
   </ion-navbar>
-
 </ion-header>
-
-
-<ion-content padding>
-
+<ion-content>
+  <div [class]="device.isWeb ? 'webCard':'mobileCard'">
+    <div>
+      <ion-list no-line inset>
+        <ion-item class="displayName">
+          <ion-label floating>Nick Name</ion-label>
+          <ion-input type="text" [(ngModel)]="newUser.displayName"></ion-input>
+        </ion-item>
+        <ion-item class="emailStyle">
+          <ion-label floating>Email</ion-label>
+          <ion-input type="email" [(ngModel)]="newUser.email"></ion-input>
+        </ion-item>
+        <ion-item class="passwordStyle">
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="newUser.password"></ion-input>
+        </ion-item>
+        <button class="signUpBtnStyle" (click)="signUp()" ion-button block>Sign Up</button>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>
