@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, LoadingController, NavController, ToastController } from 'ionic-angular';
+import { AlertController, IonicPage, LoadingController, NavController, ToastController} from 'ionic-angular';
 import { FirebaseAuthProvider } from "../../../providers/firebase-auth/firebase-auth";
 import { StyleProvider } from "../../../providers/style/style";
 import { Usercreds } from "../../../models/usercreds";
@@ -23,7 +23,8 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public device: DeviceProvider,
               public fireAuth: FirebaseAuthProvider, public style: StyleProvider,
-              public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
+              public toastCtrl: ToastController, public loadingCtrl: LoadingController,
+              public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -39,7 +40,7 @@ export class LoginPage {
         alert(respond);
       }
     }).catch(err => {
-      this.showToast('middle', err.message.replace('signInWithEmailAndPassword failed: ', ''));
+      this.showAlert('Failed', err.message.replace('signInWithEmailAndPassword failed: ', ''));
     });
   }
 
@@ -52,12 +53,8 @@ export class LoginPage {
       this.navCtrl.pop();
     }).catch(err => {
       loader.dismiss();
-      this.showToast('middle', err);
+      this.showAlert('Failed', err.message);
     });
-  }
-
-  goToRegister() {
-    this.navCtrl.push('RegisterPage');
   }
 
   showToast(position: string, message: string) {
@@ -68,6 +65,15 @@ export class LoginPage {
       cssClass: 'toastStyle'
     });
     toast.present(toast);
+  }
+
+  showAlert(title: string, subTitle: string) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subTitle,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
 }

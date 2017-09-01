@@ -5,6 +5,7 @@ import { Platform, ToastController } from 'ionic-angular';
 import { Facebook } from '@ionic-native/facebook';
 import 'rxjs/add/operator/map';
 import { Usercreds } from "../../models/usercreds";
+import {reject} from "q";
 
 @Injectable()
 export class FirebaseAuthProvider {
@@ -139,6 +140,16 @@ export class FirebaseAuthProvider {
         .catch(err => {
           reject(err);
         });
+    });
+  }
+
+  sendPasswordResetEmail(email:string) {
+    return new Promise((resolve, reject) => {
+      firebase.auth().sendPasswordResetEmail(email).then(() => {
+        resolve({success: true});
+      }).catch(err => {
+        reject(err);
+      });
     });
   }
 
