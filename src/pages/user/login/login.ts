@@ -49,8 +49,12 @@ export class LoginPage {
     loader.present();
     this.fireAuth.loginWithFacebook().then((res:any) => {
       loader.dismiss();
-      this.showToast('middle', 'Login Successfully!');
-      this.navCtrl.pop();
+      if (res.success) {
+        this.showToast('middle', 'Login Successfully!');
+        this.navCtrl.pop();
+      } else {
+        this.showAlert('Failed', '');
+      }
     }).catch(err => {
       loader.dismiss();
       this.showAlert('Failed', err.message);

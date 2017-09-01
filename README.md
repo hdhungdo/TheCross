@@ -8,7 +8,8 @@ ionic cordova prepare
 ```
 Then keep follow for adding dependencies, plugin and platform folder 
 
-Follow instruction bellow if getting any error.
+
+### Follow instruction bellow if getting any error.
 
 Error:
 ```bash
@@ -25,6 +26,7 @@ abstract popTo(page: Page | string | ViewController, params?: any, opts?: NavOpt
 To
 abstract popTo(page: Page | string | ViewController, opts?: NavOptions, done?: Function): Promise<any>;
 ```
+---
 Error:
 ```bash
 Class 'Subject<T>' incorrectly extends base class 'Observable<T>'. Types of property 'lift' are 
@@ -36,8 +38,29 @@ Fix this by run:
 ```bash
 npm install typescript@2.4.0
 ```
+---
+Error when build --prod:
+```bash
+./src/app/app.module.ngfactory.js
+Module not found: Error: Can't resolve '../../angularfire2/auth' in '/Users/hungdo/Ionic3/TheCross/src/app'
+resolve '../../angularfire2/auth' in '/Users/hungdo/Ionic3/TheCross/src/app'
+  using description file: /Users/hungdo/Ionic3/TheCross/package.json (relative path: ./src/app)
+    Field 'browser' doesn't contain a valid alias configuration
+  after using description file: /Users/hungdo/Ionic3/TheCross/package.json (relative path: ./src/app)
+    using description file: /Users/hungdo/Ionic3/TheCross/package.json (relative path: ./angularfire2/auth)
+      no extension
+        Field 'browser' doesn't contain a valid alias configuration
+        /Users/hungdo/Ionic3/TheCross/angularfire2/auth doesn't exist
+      .js..............
+```
+Fix this by running
+```bash
+npm i --save angularfire2@4.0.0-rc.1
+npm install promise-polyfill --save-exact
+```
+---
 
-Command Line for running project
+### Command Line for running project
 ```bash
 'ionic serve' for web mode
 OR

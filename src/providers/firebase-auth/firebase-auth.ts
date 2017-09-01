@@ -50,13 +50,14 @@ export class FirebaseAuthProvider {
         const facebookCredential = firebase.auth.FacebookAuthProvider.credential(res.authResponse.accessToken);
         firebase.auth().signInWithCredential(facebookCredential)
           .then((res) => {
-            resolve(res);
+            resolve({success: true});
             this.signedIn = true;
             let user = res;
             this.afAuth.auth.currentUser.updateProfile({
               displayName: user.displayName,
               photoURL: user.photoURL
             }).then(() => {
+              resolve({success: true});
               this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
                 uid: this.afAuth.auth.currentUser.uid,
                 email: user.email,
@@ -85,13 +86,14 @@ export class FirebaseAuthProvider {
     return new Promise((resolve, reject) => {
       this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
         .then((res) => {
-          resolve(res);
+          resolve({success: true});
           this.signedIn = true;
           let user = res.user;
           this.afAuth.auth.currentUser.updateProfile({
             displayName: user.displayName,
             photoURL: user.photoURL
           }).then(() => {
+              resolve({success: true});
               this.fireDatabase.child(this.afAuth.auth.currentUser.uid).set({
                 uid: this.afAuth.auth.currentUser.uid,
                 email: user.email,
