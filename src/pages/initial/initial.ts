@@ -17,7 +17,7 @@ import { BibleServiceProvider } from "../../providers/bible-service/bible-servic
 })
 export class InitialPage {
   splash:boolean = true;
-  rootPage:string = 'BiblePage';
+  rootPage:string = 'MenuPage';
 
   constructor(private bibleService: BibleServiceProvider, public storage: Storage,
               public navCtrl: NavController) {
@@ -29,7 +29,6 @@ export class InitialPage {
     this.getFontSize();
     setTimeout(() => {
       this.splash = false;
-      this.navCtrl.setRoot(this.rootPage);
     }, 2000);
   }
 
