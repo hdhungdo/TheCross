@@ -16,6 +16,7 @@ import {StyleProvider} from "../../../../providers/style/style";
 })
 export class ChatTabsPage {
 
+  friendsRoot = 'FriendsPage';
   chatsRoot = 'ChatsPage';
   groupsRoot = 'GroupsPage';
 

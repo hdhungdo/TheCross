@@ -19,6 +19,7 @@ import { FirebaseAuthProvider } from "../../../providers/firebase-auth/firebase-
 })
 export class RegisterPage {
   newUser = {} as Usercreds;
+  cfPassword:string;
 
   constructor(public navCtrl: NavController, public style: StyleProvider,
               public device: DeviceProvider, public fireAuth: FirebaseAuthProvider,
@@ -31,20 +32,27 @@ export class RegisterPage {
   }
 
   signUp() {
-    let loader = this.loadingCtrl.create();
-    loader.present();
-    this.fireAuth.addUser(this.newUser).then((res:any) => {
-      loader.dismiss();
-      if (res.success) {
-        this.showToast('middle', `Congratulation! Your account was created`)
-        this.navCtrl.pop();
-      } else {
-        this.showToast('middle', res);
-      }
-    }).catch(err => {
-      loader.dismiss();
-      this.showAlert('Failed', err.message.replace('createUserWithEmailAndPassword failed: ', ''));
-    });
+    if (this.newUser.displayName === '' || this.newUser.displayName === undefined) {
+      this.showAlert('Failed', 'Nick Name cannot be empty!');
+    } else if (this.cfPassword === this.newUser.password) {
+      let loader = this.loadingCtrl.create();
+      loader.present();
+      this.fireAuth.addUser(this.newUser).then((res:any) => {
+        loader.dismiss();
+        if (res.success) {
+          this.showToast('middle', `Congratulation! Your account was created`)
+          this.navCtrl.pop();
+        } else {
+          this.showToast('middle', res);
+        }
+      }).catch(err => {
+        loader.dismiss();
+        this.showAlert('Failed', err.message.replace('createUserWithEmailAndPassword failed: ', ''));
+      });
+    } else {
+      this.showAlert('Failed', 'Passwords do not match!');
+    }
+
   }
 
   showToast(position: string, message: string) {

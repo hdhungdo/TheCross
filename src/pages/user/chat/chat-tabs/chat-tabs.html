@@ -1,4 +1,26 @@
-<super-tabs [toolbarBackground]="style.headerBackground">
+<ion-header>
+  <ion-navbar [color]="style.headerBackground">
+    <ion-title>Messenger</ion-title>
+
+    <ion-buttons left>
+      <button ion-button icon-only style="margin-left: 10px">
+        <ion-icon name="person-add"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right>
+      <button ion-button icon-only style="margin-right: 10px">
+        <ion-icon name="contacts"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <super-tabs toolbarBackground="light" toolbarColor="hdBrown" indicatorColor="hdBrown">
+    <super-tab [root]="friendsRoot" title="Friends"></super-tab>
     <super-tab [root]="chatsRoot" title="Chats"></super-tab>
     <super-tab [root]="groupsRoot" title="Groups"></super-tab>
-</super-tabs>
+  </super-tabs>
+</ion-content>

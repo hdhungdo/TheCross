@@ -19,6 +19,10 @@
           <ion-label floating>Password</ion-label>
           <ion-input type="password" [(ngModel)]="newUser.password"></ion-input>
         </ion-item>
+        <ion-item class="cf-passwordStyle">
+          <ion-label floating>Confirm Password</ion-label>
+          <ion-input type="password" [(ngModel)]="cfPassword"></ion-input>
+        </ion-item>
         <button class="signUpBtnStyle" (click)="signUp()" ion-button block>Sign Up</button>
       </ion-list>
     </div>
