@@ -19,6 +19,8 @@ export class SearchBiblePage {
   bible = BibleServiceProvider.BIBLE;
   list = [];
   filter = [];
+  subFilter = [];
+  start:number = 0;
   input;
 
   constructor(public viewCtrl: ViewController,
@@ -77,6 +79,13 @@ export class SearchBiblePage {
             this.translate.removeDiacritics(input.replace(/[&\/\\#-=,+()$~%.'":*?<>{}]/gi,' ')
               .replace(/ {2,}/g,' ').toUpperCase())) > -1);
         });
+        if (this.filter.length !== 0) {
+          this.subFilter = [];
+          this.start = 0;
+          for (let i = 0; i < 20 && i < this.filter.length; i++) {
+            this.subFilter.push(this.filter[i]);
+          }
+        }
         load.dismiss(load);
         if (this.filter.length == 0) {
           let message = 'Cannot find "' + input + '"';
@@ -86,6 +95,8 @@ export class SearchBiblePage {
     } else {
       this.showToast('top', 'Please input text you want to search');
       this.filter = [];
+      this.subFilter = [];
+      this.start = 0;
     }
 
   }
@@ -108,6 +119,21 @@ export class SearchBiblePage {
     });
 
     toast.present(toast);
+  }
+
+  loadVerses(start:number) {
+    let end = start + 20;
+    for (let i = start; i < end && i < this.filter.length; i++) {
+      this.subFilter.push(this.filter[i]);
+    }
+  }
+
+  doInfinite(infiniteScroll) {
+    setTimeout(() => {
+      this.start += 20;
+      this.loadVerses(this.start);
+      infiniteScroll.complete();
+    }, 500);
   }
 
 }

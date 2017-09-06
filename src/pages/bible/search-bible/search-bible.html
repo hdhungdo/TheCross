@@ -15,7 +15,7 @@
 
 
 <ion-content class="content-back-ground" (click)="closeContent()">
-  <ion-card class="card-ion" color="hdYellow" *ngFor="let verse of (filter ? filter.slice(0, 99) : [])" (click)="change(verse.bookIndex, verse.chapterIndex, verse.verse)">
+  <ion-card class="card-ion" color="hdYellow" *ngFor="let verse of subFilter" (click)="change(verse.bookIndex, verse.chapterIndex, verse.verse)">
     <ion-card-header>
       <b>{{ verse.book }} {{ verse.chapter }}:{{ verse.verse }}</b>
     </ion-card-header>
@@ -23,10 +23,14 @@
       {{verse.content}}
     </ion-card-content>
   </ion-card>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
 
 <ion-footer>
-  <ion-navbar color="dark">
+  <ion-navbar color="dark" padding>
+    <a *ngIf="filter.length !== 0">{{filter.length}} results</a>
     <ion-buttons end>
       <button clear color="light" ion-button icon-right (click)="filterItems(input)" round>
         Search
