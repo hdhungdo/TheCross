@@ -90,6 +90,16 @@ export class BiblePage {
     this.update();
   }
 
+  swipe(side: string) {
+    if (!this.device.isWeb) {
+      if (side === 'left') {
+        this.next();
+      } else {
+        this.back();
+      }
+    }
+  }
+
   next() {
     let max = BibleServiceProvider.BIBLE[BibleServiceProvider.bookIndex].chapters.length;
     let bChange: number = BibleServiceProvider.bookIndex;
@@ -118,18 +128,6 @@ export class BiblePage {
     }
     BibleServiceProvider.update(bChange, cChange);
     this.update();
-  }
-
-  checkKey(e) {
-    if (e.keyCode == '37') {
-      // left arrow
-      this.back();
-    }
-    else if (e.keyCode == '39') {
-      // right arrow
-      this.next();
-    }
-
   }
 
   openFixTextSize(myEvent) {

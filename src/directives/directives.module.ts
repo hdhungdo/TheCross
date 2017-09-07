@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { HeaderHideDirective } from './header-hide/header-hide';
+import { AutoHideDirective } from './auto-hide/auto-hide';
 @NgModule({
-	declarations: [HeaderHideDirective],
+	declarations: [AutoHideDirective],
 	imports: [],
-	exports: [HeaderHideDirective]
+	exports: [AutoHideDirective]
 })
 export class DirectivesModule {}

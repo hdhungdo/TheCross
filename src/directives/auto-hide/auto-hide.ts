@@ -1,12 +1,12 @@
 import {Directive, ElementRef, Input, Renderer} from '@angular/core';
 
 @Directive({
-  selector: '[header-hide]', // Attribute selector
+  selector: '[auto-hide]', // Attribute selector
   host: {
     '(ionScroll)': 'onContentScroll($event)'
   }
 })
-export class HeaderHideDirective {
+export class AutoHideDirective {
 
   oldScrollTop: number = 0;
   scrollContent;

@@ -26,7 +26,7 @@
 </ion-header>
 
 
-<ion-content padding [class]="style.bibleDarkThemeToggle ? 'dark':'light'" header-hide [header]="headerBible">
+<ion-content padding [class]="style.bibleDarkThemeToggle ? 'dark':'light'" auto-hide [header]="headerBible">
 
   <ion-fab bottom right>
     <button ion-fab [color]="style.tabsBackground" mini (click)="next()">
@@ -43,7 +43,7 @@
 
   <div class="content">
     <div [class]="verse.background" (click)="higlight(verse)" style="text-indent: 1em;"
-         text-wrap *ngFor="let verse of verses" (swipeleft)="next()" (swiperight)="back()">
+         text-wrap *ngFor="let verse of verses" (swipeleft)="swipe('left')" (swiperight)="swipe('right')">
       <b><i><sup [class]="verseSize" [id]="verse.key.toString()">{{verse.key}}.</sup></i></b>
       <span [class]="textSize">{{verse.value}}</span>
     </div>
