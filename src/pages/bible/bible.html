@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header #headerBible>
   <ion-navbar [color]="style.headerBackground">
 
     <ion-buttons right col-4>
@@ -26,7 +26,7 @@
 </ion-header>
 
 
-<ion-content padding [class]="style.bibleDarkThemeToggle ? 'dark':'light'">
+<ion-content padding [class]="style.bibleDarkThemeToggle ? 'dark':'light'" header-hide [header]="headerBible">
 
   <ion-fab bottom right>
     <button ion-fab [color]="style.tabsBackground" mini (click)="next()">

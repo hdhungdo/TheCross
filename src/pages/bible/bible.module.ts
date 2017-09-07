@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { BiblePage } from './bible';
+import { DirectivesModule } from "../../directives/directives.module";
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { BiblePage } from './bible';
   ],
   imports: [
     IonicPageModule.forChild(BiblePage),
+    DirectivesModule,
   ],
 })
 export class BiblePageModule {}
