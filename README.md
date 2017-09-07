@@ -59,7 +59,17 @@ npm i --save angularfire2@4.0.0-rc.1
 npm install promise-polyfill --save-exact
 ```
 ---
-
+Error when `ionic cordova run ios --prod`
+```bash
+** BUILD SUCCEEDED **
+Error: Cannot read property 'replace' of undefined
+```
+Fix this by
+```bash
+Uninstall ios-sim if it is installed in global by "npm uninstall -g ios-sim"
+Go to your project folder root, do "cd platforms/ios/cordova && npm install ios-sim"
+Then run simulator again
+```
 ### Command Line for running project
 ```bash
 'ionic serve' for web mode
