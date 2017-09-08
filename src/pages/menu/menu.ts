@@ -17,12 +17,16 @@ import { FirebaseAuthProvider } from "../../providers/firebase-auth/firebase-aut
 export class MenuPage{
 
   rootPage:string = 'TabsPage';
-  pages = [{
-      page: 'CalendarPage',
-      name: 'Calendar',
-      icon: 'clock'
-    },
-    {
+  pages1 = [{
+    page: 'VideoPage',
+    name: 'Video',
+    icon: 'videocam'
+  },{
+    page: 'CalendarPage',
+    name: 'Calendar',
+    icon: 'clock'
+  }];
+  pages2 = [{
       page: 'AboutPage',
       name: 'About',
       icon: 'information-circle'
