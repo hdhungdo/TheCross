@@ -1,9 +1,15 @@
 page-menu {
-  .menus {
-    padding-left: 15px;
-    padding-right: 30px;
-  }
   .sign {
     text-transform: none;
+  }
+  .item-style {
+    color: #545454;
+    padding-left: 30px;
+  }
+  .item-style:hover {
+    background-color: #ffc249!important;
+  }
+  .item-style:focus {
+    background-color: deepskyblue!important;
   }
 }

@@ -28,22 +28,22 @@
   <ion-content>
 
     <ion-list no-lines>
-      <button *ngIf="fireAuth.signedIn" ion-item (click)="goToPage('ProfilePage')">
-        <ion-icon name="contact" small class="menus"></ion-icon>
-        Profile
+      <button *ngIf="fireAuth.signedIn" ion-item (click)="goToPage('ProfilePage')" class="item-style">
+        <ion-icon name="contact" color="hdGrey" item-start></ion-icon>
+        <b>Profile</b>
       </button>
       <ion-item-divider *ngIf="fireAuth.signedIn" color="light"></ion-item-divider>
 
-      <button ion-item *ngFor="let page of pages" (click)="goToPage(page.page)">
-        <ion-icon [name]="page.icon" sm class="menus"></ion-icon>
-        {{page.name}}
+      <button ion-item *ngFor="let page of pages" (click)="goToPage(page.page)" class="item-style">
+        <ion-icon [name]="page.icon" color="hdGrey" item-start></ion-icon>
+        <b>{{page.name}}</b>
       </button>
 
       <ion-item-divider color="light"></ion-item-divider>
 
-      <button ion-item menuClose>
-        <ion-icon name="close-circle" small class="menus"></ion-icon>
-        Close Menu
+      <button ion-item menuClose class="item-style">
+        <ion-icon name="close-circle" color="hdGrey" item-start></ion-icon>
+        <b>Close Menu</b>
       </button>
     </ion-list>
 
