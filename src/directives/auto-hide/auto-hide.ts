@@ -1,4 +1,5 @@
 import {Directive, ElementRef, Input, Renderer} from '@angular/core';
+import {DeviceProvider} from "../../providers/device/device";
 
 @Directive({
   selector: '[auto-hide]', // Attribute selector
@@ -15,7 +16,7 @@ export class AutoHideDirective {
 
   @Input("header") headerBible: HTMLElement;
 
-  constructor(private renderer: Renderer, private element: ElementRef) {
+  constructor(private renderer: Renderer, private element: ElementRef, private device: DeviceProvider) {
 
   }
 
@@ -30,23 +31,24 @@ export class AutoHideDirective {
   }
 
   onContentScroll(event) {
-    if (event.scrollTop - this.oldScrollTop > 0) {
-      this.renderer.setElementStyle(this.tabs, "bottom", "-56px");
-      this.renderer.setElementStyle(this.headerBible, "top", "-56px");
-      this.renderer.setElementStyle(this.scrollContent, "margin-top", "0");
-      this.renderer.setElementStyle(this.scrollContent, "margin-bottom", "0");
-      this.renderer.setElementStyle(this.fixScrollContent, "margin-top", "0");
-      this.renderer.setElementStyle(this.fixScrollContent, "margin-bottom", "0");
-    } else if (event.scrollTop - this.oldScrollTop < 0) {
-      this.renderer.setElementStyle(this.tabs, "bottom", "0");
-      this.renderer.setElementStyle(this.headerBible, "top", "0");
-      this.renderer.setElementStyle(this.scrollContent, "margin-top", "56px");
-      this.renderer.setElementStyle(this.scrollContent, "margin-bottom", "56px");
-      this.renderer.setElementStyle(this.fixScrollContent, "margin-top", "56px");
-      this.renderer.setElementStyle(this.fixScrollContent, "margin-bottom", "56px");
+    if (!this.device.isWeb) {
+      if (event.scrollTop - this.oldScrollTop > 0) {
+        this.renderer.setElementStyle(this.tabs, "bottom", "-56px");
+        this.renderer.setElementStyle(this.headerBible, "top", "-56px");
+        this.renderer.setElementStyle(this.scrollContent, "margin-top", "0");
+        this.renderer.setElementStyle(this.scrollContent, "margin-bottom", "0");
+        this.renderer.setElementStyle(this.fixScrollContent, "margin-top", "0");
+        this.renderer.setElementStyle(this.fixScrollContent, "margin-bottom", "0");
+      } else if (event.scrollTop - this.oldScrollTop < 0) {
+        this.renderer.setElementStyle(this.tabs, "bottom", "0");
+        this.renderer.setElementStyle(this.headerBible, "top", "0");
+        this.renderer.setElementStyle(this.scrollContent, "margin-top", "56px");
+        this.renderer.setElementStyle(this.scrollContent, "margin-bottom", "56px");
+        this.renderer.setElementStyle(this.fixScrollContent, "margin-top", "56px");
+        this.renderer.setElementStyle(this.fixScrollContent, "margin-bottom", "56px");
+      }
+      this.oldScrollTop = event.scrollTop;
     }
-
-    this.oldScrollTop = event.scrollTop;
   }
 
 }
