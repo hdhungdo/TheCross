@@ -22,6 +22,7 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { AngularFireDatabaseModule } from "angularfire2/database";
 import { Facebook } from "@ionic-native/facebook";
 import { SuperTabsModule } from "ionic2-super-tabs";
+import { YoutubeProvider } from '../providers/youtube/youtube';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { SuperTabsModule } from "ionic2-super-tabs";
     Clipboard,
     SocialSharing,
     DeviceProvider,
-    Facebook
+    Facebook,
+    YoutubeProvider
   ]
 })
 export class AppModule {}

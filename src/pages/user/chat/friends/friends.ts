@@ -17,8 +17,8 @@ export class FriendsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public config: Config) {
-    this.config.set('android', 'mode', 'ios');
-    this.config.set('windows', 'mode', 'ios');
+    // this.config.set('android', 'mode', 'ios');
+    // this.config.set('windows', 'mode', 'ios');
   }
 
   ionViewDidLoad() {

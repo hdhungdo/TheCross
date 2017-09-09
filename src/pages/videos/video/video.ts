@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {YoutubeProvider} from "../../../providers/youtube/youtube";
 
 /**
  * Generated class for the VideoPage page.
@@ -15,7 +16,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class VideoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private youtube: YoutubeProvider) {
+
   }
 
   ionViewDidLoad() {
