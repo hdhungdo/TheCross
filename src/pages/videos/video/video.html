@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>Video</ion-title>
   </ion-navbar>
-
+  <iframe *ngIf="!device.isWeb" width="100%" [height]="device.isWeb ? 650:250" [src]="'' | youtube" frameborder="0" allowfullscreen></iframe>
 </ion-header>
 
 
@@ -18,7 +18,7 @@
     <ion-card-header>card</ion-card-header>
     <ion-card-content>
 
-      <iframe width="100%" height="250" [src]="'' | youtube" frameborder="0" allowfullscreen></iframe>
+      <iframe *ngIf="device.isWeb" width="100%" [height]="device.isWeb ? 650:250" [src]="'' | youtube" frameborder="0" allowfullscreen></iframe>
 
     </ion-card-content>
   </ion-card>

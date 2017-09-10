@@ -17,6 +17,6 @@ export class YoutubePipe implements PipeTransform {
   }
 
   transform(value: string) {
-    return this.dom.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/YwN-CN9EjTg');
+    return this.dom.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/1P4DaXgzVnE');
   }
 }
