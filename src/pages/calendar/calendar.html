@@ -7,12 +7,21 @@
 <ion-header>
 
   <ion-navbar [color]="style.headerBackground">
-    <ion-title>Calendar</ion-title>
+    <ion-title>{{viewTitle}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-card class="cardStyle">
+    <calendar *ngIf="device.isWeb"
+              [calendarMode]="calendar.mode"
+              [currentDate]="calendar.currentDate"
+              (onTitleChanged)="onTitleChanged($event)"></calendar>
+  </ion-card>
+  <calendar *ngIf="!device.isWeb"
+    [calendarMode]="calendar.mode"
+    [currentDate]="calendar.currentDate"
+    (onTitleChanged)="onTitleChanged($event)"></calendar>
 </ion-content>

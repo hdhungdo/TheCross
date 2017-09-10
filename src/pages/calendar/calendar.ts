@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {StyleProvider} from "../../providers/style/style";
+import { StyleProvider } from "../../providers/style/style";
+import { DeviceProvider } from "../../providers/device/device";
 
 /**
  * Generated class for the CalendarPage page.
@@ -16,12 +17,23 @@ import {StyleProvider} from "../../providers/style/style";
 })
 export class CalendarPage {
 
+  viewTitle:string;
+  selectedDay = new Date();
+  calendar = {
+    mode: 'month',
+    currentDate: this.selectedDay
+  };
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public style: StyleProvider) {
+              public style: StyleProvider, private device: DeviceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CalendarPage');
+  }
+
+  onTitleChanged(title) {
+    this.viewTitle = title;
   }
 
 }
