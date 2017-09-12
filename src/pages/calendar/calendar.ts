@@ -25,7 +25,7 @@ export class CalendarPage {
   };
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public style: StyleProvider, private device: DeviceProvider) {
+              public style: StyleProvider, public device: DeviceProvider) {
   }
 
   ionViewDidLoad() {
