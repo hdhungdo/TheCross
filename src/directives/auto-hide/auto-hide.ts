@@ -22,9 +22,9 @@ export class AutoHideDirective {
     this.tabs = document.querySelector("#mainTabs .tabbar");
     this.scrollContent = this.element.nativeElement.getElementsByClassName("scroll-content")[0];
     this.fixScrollContent = this.element.nativeElement.getElementsByClassName("fixed-content")[0];
-    this.renderer.setElementStyle(this.tabs, "webkitTransition", "bottom 500ms");
-    this.renderer.setElementStyle(this.scrollContent, "webkitTransition", "margin-bottom 500ms");
-    this.renderer.setElementStyle(this.fixScrollContent, "webkitTransition", " margin-bottom 500ms");
+    this.renderer.setElementStyle(this.tabs, "webkitTransition", "bottom 200ms");
+    this.renderer.setElementStyle(this.scrollContent, "webkitTransition", "margin-bottom 200ms");
+    this.renderer.setElementStyle(this.fixScrollContent, "webkitTransition", " margin-bottom 200ms");
   }
 
   onContentScroll(event) {
